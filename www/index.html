@@ -72,8 +72,8 @@
         
     <script type="text/javascript" charset="utf-8">
     var user_id = window.localStorage.getItem("user_id");
-    
-   if(user_id == null){
+    alert(user_id);
+   if(user_id == null || user_id == ""){
     $.ajax({
 		url: 'http://www.councilofcoders.com/phonegap/get_user_id.php',
 		dataType: 'jsonp',
