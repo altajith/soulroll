@@ -73,89 +73,58 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
         <!-- Add your site or application content here -->
-        <div id="home-page" class="page dark-page" data-theme="a" data-role="page">
-            <div class="black-overlay"></div>
+        <div id="videos-page" class="page" data-theme="a" data-role="page">
             <div id="header" data-role="header">
                 <div class="margpage">
-                    <h1>Water</h1>
-                    <a href="info.php" data-role="none" data-transition="slideup" class="top-button left">i</a>
+                    <h1>Staff picked Videos</h1>
+                    <a href="home.php" class="menu-button left">=</a>
                 </div>
             </div>
-            <div class="ui-body padpage">
+            <div class="ui-body margpage">
                 
-                <div class="menu">
-                    <ul class="child-left">
-                        <li>
-                            <a href="about.php" class="menu-item">
-                                <img src="images/home-icons/icon-about.png" alt="About" />
-                                <span>About</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="services.php" class="menu-item">
-                                <img src="images/home-icons/icon-products.png" alt="Services" />
-                                <span>Services</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="blog.php" class="menu-item">
-                                <img src="images/home-icons/icon-blog.png" alt="Blog" />
-                                <span>Blog</span>
-                            </a>
-                        </li>
+                
+                
+                <div class="gallery-items" data-columns="3">
+                    <div class="title loading"> Loading Videos...</div>
+                    
+                    <div class="container hide group">
+                        <ul>
+                                                        <li>
+                                <iframe src="http://player.vimeo.com/video/44149205?byline=0&amp;portrait=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                            </li>
+                            <li>
+                                <iframe src="http://player.vimeo.com/video/55698309?byline=0&amp;portrait=0&amp;badge=0&amp;color=919191" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                            </li>
+                            <li>
+                                <iframe src="http://player.vimeo.com/video/58150375?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=919191" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                            </li>
+                            <li>
+                                <iframe src="http://player.vimeo.com/video/56982286?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=f20c4d" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                            </li>
+                                                        <li>
+                                <iframe src="http://player.vimeo.com/video/44149205?byline=0&amp;portrait=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                            </li>
+                            <li>
+                                <iframe src="http://player.vimeo.com/video/55698309?byline=0&amp;portrait=0&amp;badge=0&amp;color=919191" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                            </li>
+                            <li>
+                                <iframe src="http://player.vimeo.com/video/58150375?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=919191" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                            </li>
+                            <li>
+                                <iframe src="http://player.vimeo.com/video/56982286?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=f20c4d" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+                            </li>
+                                                    </ul>
                         
-                        
-                        
-                        
-                        <li>
-                            <a href="gallery.php" class="menu-item">
-                                <img src="images/home-icons/icon-gallery.png" alt="Gallery" />
-                                <span>Gallery</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="join-us.php" class="menu-item">
-                                <img src="images/home-icons/icon-careers.png" alt="Join Us" />
-                                <span>Join Us</span>
-                            </a>
-                        </li>
-                        
-                        
-                        
-                        <li>
-                            <a href="videos.php" class="menu-item">
-                                <img src="images/home-icons/icon-videos.png" alt="Videos" />
-                                <span>Videos</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="portfolio.php" class="menu-item">
-                                <img src="images/home-icons/icon-portfolio.png" alt="Portfolio" />
-                                <span>Portfolio</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="typography.php" class="menu-item">
-                                <img src="images/home-icons/icon-typography.png" alt="Typography" />
-                                <span>Typography</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.php" class="menu-item">
-                                <img src="images/home-icons/icon-contact.png" alt="Contact" />
-                                <span>Contact</span>
-                            </a>
-                        </li>
-                    </ul>
-                        
-                        
-                        
+                    </div>
                 </div>
                 
                 
+                
+
             </div>
-            <div id="footer" data-role="footer">
+            
+            
+                        <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
                         <ul class="child-left">
@@ -168,8 +137,7 @@
                         You start the ending...
                     </div>
                 </div>
-            </div>
-            
+            </div>            
         
         </div>
 

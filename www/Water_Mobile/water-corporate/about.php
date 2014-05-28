@@ -73,89 +73,57 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
         <!-- Add your site or application content here -->
-        <div id="home-page" class="page dark-page" data-theme="a" data-role="page">
-            <div class="black-overlay"></div>
+        <div id="about-page" class="page" data-theme="a" data-role="page">
             <div id="header" data-role="header">
                 <div class="margpage">
-                    <h1>Water</h1>
-                    <a href="info.php" data-role="none" data-transition="slideup" class="top-button left">i</a>
+                    <!--<h2>Water</h2>-->
+                    <h1>About Water</h1>
+                    <a href="home.php" class="menu-button left">=</a>
                 </div>
             </div>
-            <div class="ui-body padpage">
+            <div class="ui-body margpage">
                 
-                <div class="menu">
-                    <ul class="child-left">
+                <div class="column-container column-2 group">
+                    <p class="column">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.
+                    </p>
+                    <p class="column">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.
+                    </p>
+                </div>
+                    
+                <div class="flexslider">
+                    <ul class="slides">
                         <li>
-                            <a href="about.php" class="menu-item">
-                                <img src="images/home-icons/icon-about.png" alt="About" />
-                                <span>About</span>
-                            </a>
+                            <img src="http://lorempixel.com/518/282/business/?x=1" alt="Info" />
                         </li>
                         <li>
-                            <a href="services.php" class="menu-item">
-                                <img src="images/home-icons/icon-products.png" alt="Services" />
-                                <span>Services</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="blog.php" class="menu-item">
-                                <img src="images/home-icons/icon-blog.png" alt="Blog" />
-                                <span>Blog</span>
-                            </a>
-                        </li>
-                        
-                        
-                        
-                        
-                        <li>
-                            <a href="gallery.php" class="menu-item">
-                                <img src="images/home-icons/icon-gallery.png" alt="Gallery" />
-                                <span>Gallery</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="join-us.php" class="menu-item">
-                                <img src="images/home-icons/icon-careers.png" alt="Join Us" />
-                                <span>Join Us</span>
-                            </a>
-                        </li>
-                        
-                        
-                        
-                        <li>
-                            <a href="videos.php" class="menu-item">
-                                <img src="images/home-icons/icon-videos.png" alt="Videos" />
-                                <span>Videos</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="portfolio.php" class="menu-item">
-                                <img src="images/home-icons/icon-portfolio.png" alt="Portfolio" />
-                                <span>Portfolio</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="typography.php" class="menu-item">
-                                <img src="images/home-icons/icon-typography.png" alt="Typography" />
-                                <span>Typography</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.php" class="menu-item">
-                                <img src="images/home-icons/icon-contact.png" alt="Contact" />
-                                <span>Contact</span>
-                            </a>
+                            <img src="http://lorempixel.com/518/282/business/?x=2" alt="Info" />
                         </li>
                     </ul>
-                        
-                        
-                        
                 </div>
+                <p class="border">
+                    Aliquam augue mi, luctus at pharetra vel, lacinia dignissim ipsum. Maecenas luctus elit ac eros varius at molestie elit adipiscing. Etiam pretium, lectus vitae euismod hendrerit, quam nibh fringilla libero.
+                </p>
                 
+                
+                        
+                <h2> Our Tweets </h2>
+                
+                <ul id="twitter_update_list" class="border">
+                  <div style="text-align: center; width: 100%">
+                    <img src="images/ajax-loader.gif" alt="loader" />
+                  </div>
+                </ul>
+                <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+                <!-- link doesn't work anymore -->
+                <!--<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/rahul_vagadiya.json?callback=twitterCallback2&count=5"></script>-->
+                <script type="text/javascript" src="https://api.twitter.com/1/statuses/user_timeline.json?screen_name=rahul_vagadiya&callback=twitterCallback2&count=10"></script>
                 
             </div>
-            <div id="footer" data-role="footer">
+            
+            
+                        <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
                         <ul class="child-left">
@@ -168,8 +136,7 @@
                         You start the ending...
                     </div>
                 </div>
-            </div>
-            
+            </div>            
         
         </div>
 

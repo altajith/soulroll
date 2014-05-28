@@ -73,89 +73,70 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
         <!-- Add your site or application content here -->
-        <div id="home-page" class="page dark-page" data-theme="a" data-role="page">
-            <div class="black-overlay"></div>
+        <div id="join-us-page" class="page" data-theme="a" data-role="page">
             <div id="header" data-role="header">
                 <div class="margpage">
-                    <h1>Water</h1>
-                    <a href="info.php" data-role="none" data-transition="slideup" class="top-button left">i</a>
+                    <h1>Join Us</h1>
+                    <a href="home.php" class="menu-button left">=</a>
                 </div>
             </div>
-            <div class="ui-body padpage">
+            <div class="ui-body margpage">
                 
-                <div class="menu">
-                    <ul class="child-left">
-                        <li>
-                            <a href="about.php" class="menu-item">
-                                <img src="images/home-icons/icon-about.png" alt="About" />
-                                <span>About</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="services.php" class="menu-item">
-                                <img src="images/home-icons/icon-products.png" alt="Services" />
-                                <span>Services</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="blog.php" class="menu-item">
-                                <img src="images/home-icons/icon-blog.png" alt="Blog" />
-                                <span>Blog</span>
-                            </a>
-                        </li>
-                        
-                        
-                        
-                        
-                        <li>
-                            <a href="gallery.php" class="menu-item">
-                                <img src="images/home-icons/icon-gallery.png" alt="Gallery" />
-                                <span>Gallery</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="join-us.php" class="menu-item">
-                                <img src="images/home-icons/icon-careers.png" alt="Join Us" />
-                                <span>Join Us</span>
-                            </a>
-                        </li>
-                        
-                        
-                        
-                        <li>
-                            <a href="videos.php" class="menu-item">
-                                <img src="images/home-icons/icon-videos.png" alt="Videos" />
-                                <span>Videos</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="portfolio.php" class="menu-item">
-                                <img src="images/home-icons/icon-portfolio.png" alt="Portfolio" />
-                                <span>Portfolio</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="typography.php" class="menu-item">
-                                <img src="images/home-icons/icon-typography.png" alt="Typography" />
-                                <span>Typography</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.php" class="menu-item">
-                                <img src="images/home-icons/icon-contact.png" alt="Contact" />
-                                <span>Contact</span>
-                            </a>
-                        </li>
-                    </ul>
-                        
-                        
-                        
-                </div>
+                
+                <ul class="general">
+                    <li class="border">
+                        <div class="content-box no-pad type-1">
+                            <div class="group">
+                                <a target="_blank" href="mailto:apply@company.com?subject=UX+Designer+Application" class="link title"> Ramp Walker<span class="right apply">apply </span><span class="arrow"></span></a>
+                            </div>
+                            
+                            <div class="image">
+                                <img src="http://lorempixel.com/500/170/business/?x=1" alt="Image" />
+                            </div>
+                            
+                            <div class="content">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </div>  
+                        </div>
+                    </li>
+                    
+                    <li class="border">
+                        <div class="content-box no-pad type-1">
+                            <div class="group">
+                                <a target="_blank" href="mailto:apply@company.com?subject=Web+Analyst+Application" class="link title"> DJ xyz<span class="right apply">apply </span><span class="arrow"></span></a>
+                            </div>
+                            
+                            <div class="image">
+                                <img src="http://lorempixel.com/500/170/business/?x=2" alt="Image" />
+                            </div>
+                            <div class="content">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </div>  
+                        </div>
+                    </li>
+                    
+                    <li class="border">
+                        <div class="content-box no-pad type-1">
+                            <div class="group">
+                                <a target="_blank" href="mailto:apply@company.com?subject=Web+Analyst+Application" class="link title"> Female model <span class="right apply">apply </span><span class="arrow"></span></a>
+                            </div>
+                            <div class="content">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </div>  
+                        </div>
+                    </li>
+                    
+                </ul>
                 
                 
             </div>
-            <div id="footer" data-role="footer">
+            
+            
+                        <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
                         <ul class="child-left">
@@ -168,8 +149,7 @@
                         You start the ending...
                     </div>
                 </div>
-            </div>
-            
+            </div>            
         
         </div>
 

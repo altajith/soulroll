@@ -73,89 +73,81 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
         <!-- Add your site or application content here -->
-        <div id="home-page" class="page dark-page" data-theme="a" data-role="page">
-            <div class="black-overlay"></div>
+        <div id="gallery-detail-page" class="page" data-theme="a" data-role="page">
             <div id="header" data-role="header">
                 <div class="margpage">
-                    <h1>Water</h1>
-                    <a href="info.php" data-role="none" data-transition="slideup" class="top-button left">i</a>
-                </div>
+                    <a href="gallery.php" class="menu-button "></a>
+                    <h1>Galleria</h1>                    
+                    <a href="home.php" class="menu-button left">=</a>
+                                    </div>
             </div>
-            <div class="ui-body padpage">
+            <div class="ui-body margpage">
+                <center>
+                <h1 class="mini">2 Columns</h1>
+                </center>
                 
-                <div class="menu">
-                    <ul class="child-left">
-                        <li>
-                            <a href="about.php" class="menu-item">
-                                <img src="images/home-icons/icon-about.png" alt="About" />
-                                <span>About</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="services.php" class="menu-item">
-                                <img src="images/home-icons/icon-products.png" alt="Services" />
-                                <span>Services</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="blog.php" class="menu-item">
-                                <img src="images/home-icons/icon-blog.png" alt="Blog" />
-                                <span>Blog</span>
-                            </a>
-                        </li>
+                <div class="gallery-items" data-columns="2">
+                    <div class="title loading"> Loading Photos...</div>
+                    
+                    <div class="container hide group">
+                        <ul>
+                                <li>
+                                    <a href="http://lorempixel.com/400/300/fashion/?x=1" class="item image" data-ajax="false">
+                                        <img src="http://lorempixel.com/400/300/fashion/?x=1" alt="Photo 1" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://lorempixel.com/400/300/fashion/?x=2" class="item image" data-ajax="false">
+                                        <img src="http://lorempixel.com/400/300/fashion/?x=2" alt="Photo 1" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://lorempixel.com/400/300/fashion/?x=3" class="item image" data-ajax="false">
+                                        <img src="http://lorempixel.com/400/300/fashion/?x=3" alt="Photo 1" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://lorempixel.com/400/300/fashion/?x=4" class="item image" data-ajax="false">
+                                        <img src="http://lorempixel.com/400/300/fashion/?x=4" alt="Photo 1" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://lorempixel.com/400/300/fashion/?x=5" class="item image" data-ajax="false">
+                                        <img src="http://lorempixel.com/400/300/fashion/?x=5" alt="Photo 1" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://lorempixel.com/400/300/fashion/?x=6" class="item image" data-ajax="false">
+                                        <img src="http://lorempixel.com/400/300/fashion/?x=6" alt="Photo 1" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://lorempixel.com/400/300/fashion/?x=7" class="item image" data-ajax="false">
+                                        <img src="http://lorempixel.com/400/300/fashion/?x=7" alt="Photo 1" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://lorempixel.com/400/300/fashion/?x=8" class="item image" data-ajax="false">
+                                        <img src="http://lorempixel.com/400/300/fashion/?x=8" alt="Photo 1" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://lorempixel.com/400/300/fashion/?x=9" class="item image" data-ajax="false">
+                                        <img src="http://lorempixel.com/400/300/fashion/?x=9" alt="Photo 1" />
+                                    </a>
+                                </li>
+                        </ul>
                         
-                        
-                        
-                        
-                        <li>
-                            <a href="gallery.php" class="menu-item">
-                                <img src="images/home-icons/icon-gallery.png" alt="Gallery" />
-                                <span>Gallery</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="join-us.php" class="menu-item">
-                                <img src="images/home-icons/icon-careers.png" alt="Join Us" />
-                                <span>Join Us</span>
-                            </a>
-                        </li>
-                        
-                        
-                        
-                        <li>
-                            <a href="videos.php" class="menu-item">
-                                <img src="images/home-icons/icon-videos.png" alt="Videos" />
-                                <span>Videos</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="portfolio.php" class="menu-item">
-                                <img src="images/home-icons/icon-portfolio.png" alt="Portfolio" />
-                                <span>Portfolio</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="typography.php" class="menu-item">
-                                <img src="images/home-icons/icon-typography.png" alt="Typography" />
-                                <span>Typography</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact.php" class="menu-item">
-                                <img src="images/home-icons/icon-contact.png" alt="Contact" />
-                                <span>Contact</span>
-                            </a>
-                        </li>
-                    </ul>
-                        
-                        
-                        
+                    </div>
                 </div>
                 
                 
+                
+
             </div>
-            <div id="footer" data-role="footer">
+            
+            
+                        <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
                         <ul class="child-left">
@@ -168,8 +160,7 @@
                         You start the ending...
                     </div>
                 </div>
-            </div>
-            
+            </div>            
         
         </div>
 

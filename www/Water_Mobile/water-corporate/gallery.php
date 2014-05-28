@@ -73,89 +73,70 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
         <!-- Add your site or application content here -->
-        <div id="home-page" class="page dark-page" data-theme="a" data-role="page">
-            <div class="black-overlay"></div>
+        <div id="gallery-page" class="page" data-theme="a" data-role="page">
             <div id="header" data-role="header">
                 <div class="margpage">
-                    <h1>Water</h1>
-                    <a href="info.php" data-role="none" data-transition="slideup" class="top-button left">i</a>
+                    <!--<h2>Water</h2>-->
+                    <h1>Our Gallery</h1>
+                    <a href="home.php" class="menu-button left">=</a>
                 </div>
             </div>
-            <div class="ui-body padpage">
+            <div class="ui-body margpage">
                 
-                <div class="menu">
-                    <ul class="child-left">
+                
+                    
+                <div class="gallery">
+                    <ul>
                         <li>
-                            <a href="about.php" class="menu-item">
-                                <img src="images/home-icons/icon-about.png" alt="About" />
-                                <span>About</span>
+                            <a href="gallery-detail.php" class="album-photo">
+                                <span class="counter">01</span>
+                                <img src="http://lorempixel.com/440/200/business/?x=1" alt="Album 1" />
                             </a>
-                        </li>
-                        <li>
-                            <a href="services.php" class="menu-item">
-                                <img src="images/home-icons/icon-products.png" alt="Services" />
-                                <span>Services</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="blog.php" class="menu-item">
-                                <img src="images/home-icons/icon-blog.png" alt="Blog" />
-                                <span>Blog</span>
-                            </a>
-                        </li>
-                        
-                        
-                        
-                        
-                        <li>
-                            <a href="gallery.php" class="menu-item">
-                                <img src="images/home-icons/icon-gallery.png" alt="Gallery" />
-                                <span>Gallery</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="join-us.php" class="menu-item">
-                                <img src="images/home-icons/icon-careers.png" alt="Join Us" />
-                                <span>Join Us</span>
-                            </a>
-                        </li>
-                        
-                        
-                        
-                        <li>
-                            <a href="videos.php" class="menu-item">
-                                <img src="images/home-icons/icon-videos.png" alt="Videos" />
-                                <span>Videos</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="portfolio.php" class="menu-item">
-                                <img src="images/home-icons/icon-portfolio.png" alt="Portfolio" />
-                                <span>Portfolio</span>
+                            <a href="gallery-detail.php" class="album-detail group">
+                                <span class="left"> Sharp Colors and Fonts </span>
+                                <span class="right"> 3 </span>
                             </a>
                         </li>
                         
                         <li>
-                            <a href="typography.php" class="menu-item">
-                                <img src="images/home-icons/icon-typography.png" alt="Typography" />
-                                <span>Typography</span>
+                            <a href="gallery-detail.php" class="album-photo">
+                                <span class="counter">02</span>
+                                <img src="http://lorempixel.com/440/200/business/?x=2" alt="Album 2" />
+                            </a>
+                            <a href="gallery-detail.php" class="album-detail group">
+                                <span class="left"> Unlimited Creativity</span>
+                                <span class="right"> 12 </span>
                             </a>
                         </li>
+                        
                         <li>
-                            <a href="contact.php" class="menu-item">
-                                <img src="images/home-icons/icon-contact.png" alt="Contact" />
-                                <span>Contact</span>
+                            <a href="gallery-detail.php" class="album-photo">
+                                <span class="counter">03</span>
+                                <img src="http://lorempixel.com/440/200/business/?x=3" alt="Album 3" />
+                            </a>
+                            <a href="gallery-detail.php" class="album-detail group">
+                                <span class="left"> So many images!</span>
+                                <span class="right"> 10 </span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="gallery-detail.php" class="album-photo">
+                                <span class="counter">04</span>
+                                <img src="http://lorempixel.com/440/200/business/?x=4" alt="Album 4" />
+                            </a>
+                            <a href="gallery-detail.php" class="album-detail group">
+                                <span class="left"> Keep going! We have loads of pictures!</span>
+                                <span class="right"> 120 </span>
                             </a>
                         </li>
                     </ul>
-                        
-                        
-                        
                 </div>
-                
-                
+
             </div>
-            <div id="footer" data-role="footer">
+            
+            
+                        <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
                         <ul class="child-left">
@@ -168,8 +149,7 @@
                         You start the ending...
                     </div>
                 </div>
-            </div>
-            
+            </div>            
         
         </div>
 
