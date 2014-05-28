@@ -71,7 +71,14 @@
         </script>
         
     <script type="text/javascript" charset="utf-8">
-    var user_id = window.localStorage.getItem("user_id");
+    
+    $( document ).ready(function() {
+     $.get('http://www.councilofcoders.com/phonegap/get_user_id.php', function (data) {
+        alert(data+"ss");
+    	});
+	});
+
+    /*var user_id = window.localStorage.getItem("user_id");
     alert(user_id);
    if(user_id == null || user_id == ""){
     $.ajax({
@@ -88,7 +95,7 @@
 			alert("er");
 		}
 	});
-	}
+	}*/
 	
 	/*window.onload=function(){
 	//if(user_id == null){
