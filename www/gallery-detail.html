@@ -134,7 +134,7 @@
 		data: { itm_id: uitem_id }, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
-		timeout: 5000,
+		timeout: 50000000,
 		success: function(data, status){
 			$.each(data, function(i,item){ 
 				var menu = '<h4>'+item.item_name+'</h4>'
