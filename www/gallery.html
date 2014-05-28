@@ -77,76 +77,49 @@
             <div id="header" data-role="header">
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
-                    <h1>Our Gallery</h1>
-                    <a href="home.php" class="menu-button left">=</a>
+                    <h1>Menu</h1>
+                    <a href="index.html" class="menu-button left">=</a>
                 </div>
             </div>
             <div class="ui-body margpage">
                 
-                
-                    
                 <div class="gallery">
-                    <ul>
-                        <li>
-                            <a href="gallery-detail.php" class="album-photo">
-                                <span class="counter">01</span>
-                                <img src="http://lorempixel.com/400/200/?x=1" alt="Album 1" />
-                            </a>
-                            <a href="gallery-detail.php" class="album-detail group">
-                                <span class="left"> Sharp Colors and Fonts </span>
-                                <span class="right"> 3 </span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="gallery-detail.php" class="album-photo">
-                                <span class="counter">02</span>
-                                <img src="http://lorempixel.com/400/200/?x=2" alt="Album 2" />
-                            </a>
-                            <a href="gallery-detail.php" class="album-detail group">
-                                <span class="left"> Unlimited Creativity</span>
-                                <span class="right"> 12 </span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="gallery-detail.php" class="album-photo">
-                                <span class="counter">03</span>
-                                <img src="http://lorempixel.com/400/200/?x=3" alt="Album 3" />
-                            </a>
-                            <a href="gallery-detail.php" class="album-detail group">
-                                <span class="left"> So many images!</span>
-                                <span class="right"> 10 </span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="gallery-detail.php" class="album-photo">
-                                <span class="counter">04</span>
-                                <img src="http://lorempixel.com/400/200/?x=4" alt="Album 4" />
-                            </a>
-                            <a href="gallery-detail.php" class="album-detail group">
-                                <span class="left"> Keep going! We have loads of pictures!</span>
-                                <span class="right"> 120 </span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="gallery-detail.php" class="album-photo">
-                                <span class="counter">05</span>
-                                <img src="http://lorempixel.com/400/200/?x=5" alt="Album 5" />
-                            </a>
-                            <a href="gallery-detail.php" class="album-detail group">
-                                <span class="left"> Okay, last album, please!</span>
-                                <span class="right"> 20</span>
-                            </a>
-                        </li>
+                    <ul id="menu_items">
                     </ul>
                 </div>
 
             </div>
             
-            
+            <script type="text/javascript">
+	//Load the menu list
+	var output = $('#menu_items');
+	$.ajax({
+		url: 'http://localhost:8888/phonegap/get_menu_items.php',
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+			$.each(data, function(i,item){ 
+				var menu = '<li>'
+                            +'<a href="gallery-detail.html" class="album-photo"  style="height:300px !important;">'
+                               +' <span class="counter">'+(i+1)+'</span>'
+                               +' <img src="'+item.item_image_path+'" style="height:100% !important;" alt="Album 1" />'
+                          + '</a>'
+                            +'<a href="gallery-detail.html" class="album-detail group">'
+                              +  '<span class="left"> '+item.item_name+' </span>'
+                               + '<span class="right">  $'+item.price+'  </span>'
+                           + '</a>'
+                        +'</li>';
+				output.append(menu);
+			});
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	
+        </script>
+        
                         <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
