@@ -72,6 +72,8 @@
         
     <script type="text/javascript" charset="utf-8">
     var user_id = window.localStorage.getItem("user_id");
+    
+			alert(user_id);
     if(user_id == null){
     $.ajax({
 		url: 'http://www.councilofcoders.com/phonegap/get_user_id.php',
@@ -86,6 +88,8 @@
 		}
 	});
 	}
+	
+	document.getElementById("val").value=user_id;
     </script>
         
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
@@ -96,6 +100,8 @@
             <div id="header" data-role="header">
                 <div class="margpage">
                     <h1>Water</h1>
+                    
+                    		<input type="text" name="val" id="val">
                     <a href="info.html" data-role="none" data-transition="slideup" class="top-button left">i</a>
                 </div>
             </div>
