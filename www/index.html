@@ -73,7 +73,7 @@
     <script type="text/javascript" charset="utf-8">
     var user_id = window.localStorage.getItem("user_id");
     
-   /*if(user_id == null){
+   if(user_id == null){
     $.ajax({
 		url: 'http://www.councilofcoders.com/phonegap/get_user_id.php',
 		dataType: 'jsonp',
@@ -88,26 +88,32 @@
 			alert("er");
 		}
 	});
-	}*/
+	}
 	
-	window.onload=function(){
-	if(user_id == null){
+	/*window.onload=function(){
+	//if(user_id == null){
 		
-  if (window.XMLHttpRequest) {
+/*
+  /}
+	document.getElementById("val").value=user_id;};
+	
+	function lol(){
+		
+		  if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
   } else { // code for IE6, IE5
     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
   xmlhttp.onreadystatechange=function() {
-    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-    	window.localStorage.setItem("user_id", xmlhttp.responseText);
-    };
+    	//var dt=xmlhttp.responseText;
+    	alert(xmlhttp.responseText);
+    	//window.localStorage.setItem("user_id", dt);
+    
   };
-  xmlhttp.open("GET","http://www.councilofcoders.com/phonegap/get_user_id.php",true);
+  xmlhttp.open("GET","http://www.councilofcoders.com/phonegap/get_user_id.php",false);
   xmlhttp.send();
-  }
-	document.getElementById("val").value=user_id;};
+	}*/
     </script>
         
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
@@ -119,7 +125,7 @@
                 <div class="margpage">
                     <h1>Water</h1>
                     
-                    		<input type="text" name="val" id="val">
+                    		<input type="button" onClick="lol();" value="SET" class="buton" id="val"/>
                     <a href="info.html" data-role="none" data-transition="slideup" class="top-button left">i</a>
                 </div>
             </div>
