@@ -155,6 +155,61 @@
                         </ul>
                     </div>
                     <div class="slogan right">
+                    	  <div class="app">
+            <h1>PhoneGap</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/phonegap-1.2.0.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+           // app.initialize();
+            
+             document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        var db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+        
+         db.transaction(queryDB);
+    	alert("db"+db.id);
+    }
+
+    // Populate the database 
+    //
+    function populateDB(tx) {
+         tx.executeSql('DROP TABLE IF EXISTS DEMO');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+         
+    }
+
+    // Transaction error callback
+    //
+    function errorCB(tx, err) {
+        alert("Error processing SQL: "+err);
+    }
+
+	function queryDB(tx) {
+             var sql = 'SELECT * FROM table WHERE id = 1'; 
+             tx.executeSql(sql, [code], querySuccess, errorCB);
+             alert(tx);
+      }
+    // Transaction success callback
+    //
+    function successCB() {
+        alert("success!");
+    }
+    
+    
+
+        </script>
+        
                         You start the ending...
                     </div>
                 </div>
