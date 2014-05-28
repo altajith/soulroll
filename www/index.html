@@ -70,6 +70,24 @@
             s.parentNode.insertBefore(g,s)}(document,"script"));
         </script>
         
+    <script type="text/javascript" charset="utf-8">
+    var user_id = window.localStorage.getItem("user_id");
+    if(user_id == null){
+    $.ajax({
+		url: 'http://www.councilofcoders.com/phonegap/get_user_id.php',
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+			window.localStorage.setItem("user_id", data.user_id);
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	}
+    </script>
+        
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
         <!-- Add your site or application content here -->

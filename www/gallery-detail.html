@@ -77,41 +77,16 @@
             <div id="header" data-role="header">
                 <div class="margpage">
                     <a href="gallery.html" class="menu-button "></a>
-                    <h1>Galleria</h1>                    
+                    <h1>Food Item</h1>                    
                     <a href="home.html" class="menu-button left">=</a>
                                     </div>
             </div>
             <div class="ui-body margpage">
-                <center>
-                <h1 class="mini">1 Column [<a href="javascript:window.location = window.location;">Refresh?</a>]</h1>
-                </center>
-                
                 <div class="gallery-items" data-columns="1">
-                    <div class="title loading"> Loading Photos...</div>
+                    <div class="title loading"> Loading Food Item...</div>
                     
                     <div class="container hide group">
-                        <ul>
-                                                            <li>
-                                    <a href="images/gallery/image2.jpg" class="item image" data-ajax="false">
-                                        <img src="images/gallery/image2.jpg" alt="Photo 1" />
-                                    </a>
-                                </li>
-                                                            <li>
-                                    <a href="images/gallery/image3.jpg" class="item image" data-ajax="false">
-                                        <img src="images/gallery/image3.jpg" alt="Photo 2" />
-                                    </a>
-                                </li>
-                                                            <li>
-                                    <a href="images/gallery/image4.jpg" class="item image" data-ajax="false">
-                                        <img src="images/gallery/image4.jpg" alt="Photo 3" />
-                                    </a>
-                                </li>
-                                                            <li>
-                                    <a href="images/gallery/image5.jpg" class="item image" data-ajax="false">
-                                        <img src="images/gallery/image5.jpg" alt="Photo 4" />
-                                    </a>
-                                </li>
-                                                    </ul>
+                        <div id="menu_item"> </div>
                         
                     </div>
                 </div>
@@ -133,14 +108,54 @@
                     </div>
                     <div class="slogan right">
                         You start the ending...
+                        
                     </div>
                 </div>
             </div>            
         
         </div>
 
-
-        
-        
+		  <script type="text/javascript">
+     //get url paramteres
+     function getUrlVars() {
+    	var vars = {};
+    	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    	function(m,key,value) {
+		vars[key] = value;
+    	});
+    	return vars;
+  	}
+  
+	var output = $('#menu_item');
+	var uitem_id = getUrlVars()["item_id"];
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/get_selected_item.php',
+		data: { itm_id: uitem_id }, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+			$.each(data, function(i,item){ 
+				var menu = '<h4>'+item.item_name+'</h4>'
+						+'<a class="item image" data-ajax="false">'
+                                       + '<img src="'+item.item_image_path+'" alt="Photo 1" />'
+                                   + '</a>'
+                                   +'<p><br/>Price : $'+item.price+'<br/>'
+                                   +'Available for : '+item.available_meal+'</br>'
+                                   +'Food Type : '+item.menu_type+'</br>'
+                                   +'Portion Size : '+item.portion_size+'</br>'
+                                   +'Additional Info : '+item.additional_info+'</br>';
+                         
+				output.append(menu);
+			});
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+    	
+    
+        </script>
     </body>
 </html>
