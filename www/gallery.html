@@ -116,7 +116,20 @@
                               + '<span class="right">  $'+item.price+'  </span>'
                            + '</a>'
                            
-                              + '<span class="right"><input type="checkbox" onClick="change_the_cart('+item.item_id+');" class="squaredOne" id="chkbut'+item.item_id+'" /><lable id="chklbl'+item.item_id+'" class="lbl"><b>Check</b></lable></span>'
+                              + '<span class="right"><input type="checkbox" onClick="change_the_cart('+item.item_id+');" class="squaredOne" id="chkbut'+item.item_id+'" /><lable id="chklbl'+item.item_id+'" class="lbl"><b>Check</b></lable>'
+                              + '<select class="noOfItems" onchange="update_cart('+item.item_id+');" id="noItems'+item.item_id+'" >'
+                              + 	'<option value="1">1</option>'
+                              + 	'<option value="2">2</option>'
+                              + 	'<option value="3">3</option>'
+                              + 	'<option value="4">4</option>'
+                              + 	'<option value="5">5</option>'
+                              + 	'<option value="6">6</option>'
+                              + 	'<option value="7">7</option>'
+                              + 	'<option value="8">8</option>'
+                              + 	'<option value="9">9</option>'
+                              + 	'<option value="10">10</option>'
+                              + '</select>'
+                              +'</span>'
                         +'</li>';
 				output.append(menu);
 				check_item_available_in_cart(item.item_id);
@@ -142,10 +155,11 @@
 	function add_item(uitem_id){
 	var pass_id=uitem_id;
 	var user_id = window.localStorage.getItem("user_id");
+	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
 	$.ajax({
 		type: 'GET',
 		url: 'http://www.councilofcoders.com/phonegap/add_to_cart.php',
-		data: { itm_id: uitem_id, usr_id: user_id}, 
+		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
 		timeout: 5000,
@@ -196,7 +210,9 @@
 		success: function(data, status){
 			if(data.res == "1")
 			{
+				
 				document.getElementById('chkbut' + uitem_id).checked=true;
+				document.getElementById('noItems' + uitem_id).value=data.noOfItems;
 			}
 			else
 			{
@@ -208,6 +224,35 @@
 		}
 	});
 		
+	}
+	
+	function update_cart(uitem_id){
+	var pass_id=uitem_id;
+	if(document.getElementById('chkbut' + pass_id).checked == true){
+	var user_id = window.localStorage.getItem("user_id");
+	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/update_cart.php',
+		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+				if(data.res == "1"){
+					
+					alert("Update the cart;");
+				}
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	}
+	}
+	
+	function confirm_order(){
+		window.location ="services.html";
 	}
         </script>
    
@@ -221,7 +266,7 @@
                         </ul>
                     </div>
                     <div class="slogan right">
-                        You start the ending...
+                        <input type="button" onclick="confirm_order();" style="background-color: #45484D; " value="Done" />
                     </div>
                 </div>
             </div>            

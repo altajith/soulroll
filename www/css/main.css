@@ -1541,7 +1541,7 @@ ul.general{
 }
 
 
-
+/*ErbenLab Developers : Ajith Prasanna*/
 /* SQUARED ONE */
 .squaredOne {
 	width: auto;
@@ -1610,6 +1610,15 @@ ul.general{
 	width: auto;
 	height: 20px;
 	left: 20px;
+	top: 0px;
+}
+
+.noOfItems{
+	cursor: pointer;
+	position: absolute;
+	width: auto;
+	height: 20px;
+	left: 70px;
 	top: 0px;
 }
 

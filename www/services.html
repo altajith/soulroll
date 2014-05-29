@@ -77,66 +77,188 @@
             <div id="header" data-role="header">
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
-                    <h1>Our Services</h1>
+                    <h1>Order Confirm</h1>
                     <a href="home.html" class="menu-button left">=</a>
                 </div>
             </div>
-            <div class="ui-body margpage">
+           
+             <div class="ui-body margpage">
                 
-                <ul class="general services products">
-                    <li>
-                        <div class="content-box type-1">
-                            <div class="line-graphic"></div>
-                            <div class="head group">
-                                <span class="title left">IT Solutions</span>
-                                <img src="images/icons/icon-mac.png" alt="Mac" class="right icon" />
-                            </div>
-                            <div class="content">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li>
-                        <div class="content-box type-1">
-                            <div class="line-graphic"></div>
-                            <div class="head group">
-                                <span class="title left">Sales Advisory</span>
-                                <img src="images/icons/icon-salesman.png" alt="Sales" class="right icon" />
-                            </div>
-                            <div class="content">
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                </p>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    
-                    <li>
-                        <div class="content-box type-1">
-                            <div class="line-graphic"></div>
-                            <div class="head group">
-                                <span class="title left">Waterproofing</span>
-                            </div>
-                            <div class="content">
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                </p>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    
-                </ul>
+                <div class="gallery">
+                    <ul id="selected_menu_items">
+                    </ul>
+                </div>
 
             </div>
             
+          <script type="text/javascript">
+            
+            function setHref(val_id){
+            	window.location = "gallery-detail.html?item_id="+val_id;
+            }
+            
+	//Load the menu list
+	var output = $('#selected_menu_items');
+	var user_id = window.localStorage.getItem("user_id");
+	var total_amount=0;
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/get_items_from_cart.php',
+		data: {usr_id: user_id}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+			$.each(data, function(i,item){ 
+				var noOfItems=item.no_of_items;
+				total_amount = parseInt(total_amount) + (parseInt(item.price)*noOfItems);
+				
+				var menu = '<li>'
+                            +'<a onclick="setHref('+item.item_id+');" class="album-photo"  style="height:200px !important;">'
+                               +' <span class="counter">'+(i+1)+'</span>'
+                               +' <img src="'+item.item_image_path+'" style="height:100% !important;" alt="Album 1" />'
+                          + '</a>'
+                            +'<a class="album-detail group">'
+                              +  '<span class="left"> '+item.item_name+' </span>'
+                              + '<span class="right">  $'+item.price+'  </span>'
+                           + '</a>'
+                           
+                              + '<span class="right"><input type="checkbox" onClick="change_the_cart('+item.item_id+');" class="squaredOne" id="chkbut'+item.item_id+'" /><lable id="chklbl'+item.item_id+'" class="lbl"><b>Check</b></lable>'
+                              + '<select class="noOfItems" onchange="update_cart('+item.item_id+');" id="noItems'+item.item_id+'" >'
+                              + 	'<option value="1">1</option>'
+                              + 	'<option value="2">2</option>'
+                              + 	'<option value="3">3</option>'
+                              + 	'<option value="4">4</option>'
+                              + 	'<option value="5">5</option>'
+                              + 	'<option value="6">6</option>'
+                              + 	'<option value="7">7</option>'
+                              + 	'<option value="8">8</option>'
+                              + 	'<option value="9">9</option>'
+                              + 	'<option value="10">10</option>'
+                              + '</select>'
+                              +'</span>'
+                        +'</li>';
+				output.append(menu);
+				check_item_available_in_cart(item.item_id);
+			
+			});
+			document.getElementById("final_amount").innerHTML="Total Amount : $"+total_amount;
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	
+	function change_the_cart(uitem_id){
+		if(document.getElementById("chkbut" + uitem_id).checked != true)
+		{
+			remove_item(uitem_id);
+		}
+	}
+	
+	function remove_item(uitem_id){
+	var pass_id=uitem_id;
+	var user_id = window.localStorage.getItem("user_id");
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/remove_from_cart.php',
+		data: { itm_id: uitem_id, usr_id: user_id}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+				if(data.res == "1"){
+					
+					alert("Removed from the cart;");
+					location.reload();
+				}
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	}
+	
+	function check_item_available_in_cart(uitem_id){
+	var pass_id=uitem_id;
+	var user_id = window.localStorage.getItem("user_id");
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/check_cart.php',
+		data: { itm_id: uitem_id, usr_id: user_id}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 50000000,
+		success: function(data, status){
+			if(data.res == "1")
+			{
+				
+				document.getElementById('chkbut' + uitem_id).checked=true;
+				document.getElementById('noItems' + uitem_id).value=data.noOfItems;
+			}
+			else
+			{
+				document.getElementById('chkbut' + uitem_id).checked=false;
+			}
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+		
+	}
+	
+	function update_cart(uitem_id){
+	var pass_id=uitem_id;
+	if(document.getElementById('chkbut' + pass_id).checked == true){
+	var user_id = window.localStorage.getItem("user_id");
+	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/update_cart.php',
+		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+				if(data.res == "1"){
+					
+					alert("Update the cart;");
+				}
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	}
+	}
+	
+	function confirm_order(){
+	var user_id = window.localStorage.getItem("user_id");
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/confirm_order.php',
+		data: {usr_id: user_id}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 50000000,
+		success: function(data, status){
+			if(data.res == "1")
+			{
+				alert("Successfully accepted your order.");
+			}
+			else
+			{
+				alert("Error is occurred.");
+			}
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+		window.location ="index.html";
+	}
+        </script>
             
                         <div id="footer" class="footer">
                 <div class="padpage group">
@@ -148,7 +270,8 @@
                         </ul>
                     </div>
                     <div class="slogan right">
-                        You start the ending...
+                        <span id="final_amount"> </span>
+                        <input type="button" onclick="confirm_order();" style="background-color: #45484D; " value="Confirm" />
                     </div>
                 </div>
             </div>            
