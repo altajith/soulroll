@@ -107,8 +107,8 @@
                         </ul>
                     </div>
                     <div class="slogan right">
-                        You start the ending...
-                        
+                        <input type="button" onclick="confirm_order();" style="background-color: #45484D; " value="My Order" />
+                  
                     </div>
                 </div>
             </div>            
@@ -145,17 +145,144 @@
                                    +'Available for : '+item.available_meal+'</br>'
                                    +'Food Type : '+item.menu_type+'</br>'
                                    +'Portion Size : '+item.portion_size+'</br>'
-                                   +'Additional Info : '+item.additional_info+'</br>';
+                                   +'Additional Info : '+item.additional_info+'</br>'
+                                   +'<b> Check </b><input type="checkbox" onClick="change_the_cart('+item.item_id+');" id="chkbut'+item.item_id+'" />'
+                              + '<br/><b>No Of Items</b><select onchange="update_cart('+item.item_id+');" id="noItems'+item.item_id+'" >'
+                              + 	'<option value="1">1</option>'
+                              + 	'<option value="2">2</option>'
+                              + 	'<option value="3">3</option>'
+                              + 	'<option value="4">4</option>'
+                              + 	'<option value="5">5</option>'
+                              + 	'<option value="6">6</option>'
+                              + 	'<option value="7">7</option>'
+                              + 	'<option value="8">8</option>'
+                              + 	'<option value="9">9</option>'
+                              + 	'<option value="10">10</option>'
+                              + '</select>';
                          
 				output.append(menu);
+				check_item_available_in_cart(item.item_id);
 			});
 		},
 		error: function(){
 			output.text('There was an error loading the data.');
 		}
 	});
+	
+	
+	function change_the_cart(uitem_id){
+		if(document.getElementById("chkbut" + uitem_id).checked == true)
+		{
+			add_item(uitem_id);
+		}
+		else
+		{
+			remove_item(uitem_id);
+		}
+	}
+	
+	function add_item(uitem_id){
+	var pass_id=uitem_id;
+	var user_id = window.localStorage.getItem("user_id");
+	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/add_to_cart.php',
+		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+				if(data.res == "1"){
+					
+					alert("Added to the cart;");
+				}
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	}
+	
+	function remove_item(uitem_id){
+	var pass_id=uitem_id;
+	var user_id = window.localStorage.getItem("user_id");
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/remove_from_cart.php',
+		data: { itm_id: uitem_id, usr_id: user_id}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+				if(data.res == "1"){
+					
+					alert("Removed from the cart;");
+				}
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	}
+	
+	function check_item_available_in_cart(uitem_id){
+	var pass_id=uitem_id;
+	var user_id = window.localStorage.getItem("user_id");
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/check_cart.php',
+		data: { itm_id: uitem_id, usr_id: user_id}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 50000000,
+		success: function(data, status){
+			if(data.res == "1")
+			{
+				
+				document.getElementById('chkbut' + uitem_id).checked=true;
+				document.getElementById('noItems' + uitem_id).value=data.noOfItems;
+			}
+			else
+			{
+				document.getElementById('chkbut' + uitem_id).checked=false;
+			}
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+		
+	}
+	
+	function update_cart(uitem_id){
+	var pass_id=uitem_id;
+	if(document.getElementById('chkbut' + pass_id).checked == true){
+	var user_id = window.localStorage.getItem("user_id");
+	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/update_cart.php',
+		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+				if(data.res == "1"){
+					
+					alert("Update the cart;");
+				}
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	}
+	}
     	
-    
+    function confirm_order(){
+		window.location ="services.html";
+	}
         </script>
     </body>
 </html>

@@ -77,8 +77,8 @@
             <div id="header" data-role="header">
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
-                    <h1>Order Confirm</h1>
-                    <a href="home.html" class="menu-button left">=</a>
+                    <h1>My Order</h1>
+                    <a href="index.html" class="menu-button left">=</a>
                 </div>
             </div>
            
@@ -224,6 +224,7 @@
 				if(data.res == "1"){
 					
 					alert("Update the cart;");
+					location.reload();
 				}
 		},
 		error: function(){
@@ -233,31 +234,6 @@
 	}
 	}
 	
-	function confirm_order(){
-	var user_id = window.localStorage.getItem("user_id");
-	$.ajax({
-		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/confirm_order.php',
-		data: {usr_id: user_id}, 
-		dataType: 'jsonp',
-		jsonp: 'jsoncallback',
-		timeout: 50000000,
-		success: function(data, status){
-			if(data.res == "1")
-			{
-				alert("Successfully accepted your order.");
-			}
-			else
-			{
-				alert("Error is occurred.");
-			}
-		},
-		error: function(){
-			output.text('There was an error loading the data.');
-		}
-	});
-		window.location ="index.html";
-	}
         </script>
             
                         <div id="footer" class="footer">
@@ -271,8 +247,7 @@
                     </div>
                     <div class="slogan right">
                         <span id="final_amount"> </span>
-                        <input type="button" onclick="confirm_order();" style="background-color: #45484D; " value="Confirm" />
-                    </div>
+                     </div>
                 </div>
             </div>            
         
