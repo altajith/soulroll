@@ -125,7 +125,8 @@
     	});
     	return vars;
   	}
-  
+  	
+    var place_order = window.localStorage.getItem("place_order");
 	var output = $('#menu_item');
 	var uitem_id = getUrlVars()["item_id"];
 	$.ajax({
@@ -145,8 +146,11 @@
                                    +'Available for : '+item.available_meal+'</br>'
                                    +'Food Type : '+item.menu_type+'</br>'
                                    +'Portion Size : '+item.portion_size+'</br>'
-                                   +'Additional Info : '+item.additional_info+'</br>'
-                                   +'<b> Check </b><input type="checkbox" onClick="change_the_cart('+item.item_id+');" id="chkbut'+item.item_id+'" />'
+                                   +'Additional Info : '+item.additional_info+'</br>';
+                                   
+               			if(window.place_order != "true")
+						{ 
+                             menu=menu +'<b> Check </b><input type="checkbox" onClick="change_the_cart('+item.item_id+');" id="chkbut'+item.item_id+'" />'
                               + '<br/><b>No Of Items</b><select onchange="update_cart('+item.item_id+');" id="noItems'+item.item_id+'" >'
                               + 	'<option value="1">1</option>'
                               + 	'<option value="2">2</option>'
@@ -159,7 +163,7 @@
                               + 	'<option value="9">9</option>'
                               + 	'<option value="10">10</option>'
                               + '</select>';
-                         
+                       }
 				output.append(menu);
 				check_item_available_in_cart(item.item_id);
 			});
@@ -171,13 +175,16 @@
 	
 	
 	function change_the_cart(uitem_id){
-		if(document.getElementById("chkbut" + uitem_id).checked == true)
+		if(window.place_order != "true")
 		{
-			add_item(uitem_id);
-		}
-		else
-		{
-			remove_item(uitem_id);
+			if(document.getElementById("chkbut" + uitem_id).checked == true)
+			{
+				add_item(uitem_id);
+			}
+			else
+			{
+				remove_item(uitem_id);
+			}
 		}
 	}
 	
@@ -282,6 +289,30 @@
     	
     function confirm_order(){
 		window.location ="services.html";
+	}
+	
+	function place_order_func(){
+		var place_order = window.localStorage.getItem("place_order");
+		if(window.validate_count != 0){
+			if(place_order == "true")
+			{
+				document.getElementById("place_button").value="Order is placed.";
+				document.getElementById("place_button").disabled=true;
+				document.getElementById("my_order_button").type="button";
+				document.getElementById("place_button").type="hidden";
+			}
+			else
+			{
+				window.localStorage.setItem("place_order", "true");
+				document.getElementById("my_order_button").type="hidden";
+				document.getElementById("place_button").type="button";
+				window.location = "service.html";
+			}
+		}
+		else
+		{
+			alert("You have to select at least one item.");
+		}
 	}
         </script>
     </body>

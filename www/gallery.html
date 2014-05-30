@@ -93,12 +93,13 @@
             
             
    <script type="text/javascript">
+    var validate_count=0;
     var order_id = window.localStorage.getItem("order_id");
     var table_no = window.localStorage.getItem("table_no");
     if(order_id == null || order_id == ""){
   		window.location = "start-order.html";
     }
-            
+         
     function setHref(val_id){
        window.location = "gallery-detail.html?item_id="+val_id;
     }
@@ -107,6 +108,8 @@
     	document.getElementById("table_no").innerHTML="Selected Table No : "+table_no;
     };
 	//Load the menu list
+	
+    var place_order = window.localStorage.getItem("place_order");
 	var output = $('#menu_items');
 	$.ajax({
 		url: 'http://www.councilofcoders.com/phonegap/get_menu_items.php',
@@ -123,9 +126,10 @@
                             +'<a class="album-detail group">'
                               +  '<span class="left"> '+item.item_name+' </span>'
                               + '<span class="right">  $'+item.price+'  </span>'
-                           + '</a>'
-                           
-                              + '<span class="right"><input type="checkbox" onClick="change_the_cart('+item.item_id+');" class="squaredOne" id="chkbut'+item.item_id+'" /><lable id="chklbl'+item.item_id+'" class="lbl"><b>Check</b></lable>'
+                           + '</a>';
+						if(place_order != "true")
+						{      
+                         menu=menu + '<span class="right"><input type="checkbox" onClick="change_the_cart('+item.item_id+');" class="squaredOne" id="chkbut'+item.item_id+'" /><lable id="chklbl'+item.item_id+'" class="lbl"><b>Check</b></lable>'
                               + '<select class="noOfItems" onchange="update_cart('+item.item_id+');" id="noItems'+item.item_id+'" >'
                               + 	'<option value="1">1</option>'
                               + 	'<option value="2">2</option>'
@@ -140,6 +144,7 @@
                               + '</select>'
                               +'</span>'
                         +'</li>';
+                       }
 				output.append(menu);
 				check_item_available_in_cart(item.item_id);
 			
@@ -151,13 +156,17 @@
 	});
 	
 	function change_the_cart(uitem_id){
-		if(document.getElementById("chkbut" + uitem_id).checked == true)
+		var place_order = window.localStorage.getItem("place_order");
+		if(place_order != "true")
 		{
-			add_item(uitem_id);
-		}
-		else
-		{
-			remove_item(uitem_id);
+			if(document.getElementById("chkbut" + uitem_id).checked == true)
+			{
+				add_item(uitem_id);
+			}
+			else
+			{
+				remove_item(uitem_id);
+			}
 		}
 	}
 	
@@ -176,6 +185,7 @@
 				if(data.res == "1"){
 					
 					alert("Added to the cart;");
+					validate_count++;
 				}
 		},
 		error: function(){
@@ -198,6 +208,7 @@
 				if(data.res == "1"){
 					
 					alert("Removed from the cart;");
+					validate_count--;
 				}
 		},
 		error: function(){
@@ -222,6 +233,7 @@
 				
 				document.getElementById('chkbut' + uitem_id).checked=true;
 				document.getElementById('noItems' + uitem_id).value=data.noOfItems;
+				validate_count++;
 			}
 			else
 			{
@@ -235,7 +247,10 @@
 		
 	}
 	
-	function update_cart(uitem_id){
+function update_cart(uitem_id){
+	var place_order = window.localStorage.getItem("place_order");
+	if(place_order != "true")
+	{
 	var pass_id=uitem_id;
 	if(document.getElementById('chkbut' + pass_id).checked == true){
 	var user_id = window.localStorage.getItem("user_id");
@@ -259,24 +274,63 @@
 	});
 	}
 	}
+}
 	
 	function confirm_order(){
 		window.location ="services.html";
+	}
+	
+			
+	function place_order_func(){
+		var place_order = window.localStorage.getItem("place_order");
+		if(window.validate_count != 0){
+			if(place_order == "true")
+			{
+				document.getElementById("place_button").value="Order is placed.";
+				document.getElementById("place_button").disabled=true;
+			}
+			else
+			{
+				window.localStorage.setItem("place_order", "true");
+				window.location = "services.html";
+			}
+		}
+		else
+		{
+			alert("You have to select at least one item.");
+		}
 	}
         </script>
    
                         <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
+                    	<input type="button" id="my_order_button" onclick="confirm_order();" style="background-color: #45484D; " value="My Order" />
+                        
                         <ul class="child-left">
                             <li> <a href="#" class="twitter" title="Follow us on Twitter"></a> </li>
                             <li> <a href="#" class="facebook" title="Like us on Facebook"></a> </li>
                             <li> <a href="#" class="linkedin" title="Follow us on Linkedin"></a> </li>
                         </ul>
-                    </div>
+                    </div> 
                     <div class="slogan right">
-                        <input type="button" onclick="confirm_order();" style="background-color: #45484D; " value="My Order" />
+                    	<input type="button" id="place_button" onclick="place_order_func();" style="background-color: #45484D;"  />
                     </div>
+            <script>
+            	  
+    	var place_order = window.localStorage.getItem("place_order");
+    	
+		if(place_order == "true")
+		{
+			document.getElementById("place_button").value="Order is placed";
+			document.getElementById("place_button").disabled=true;
+		}
+		else
+		{
+			document.getElementById("place_button").value="Place your Order";
+		}
+	
+            </script>      
                 </div>
             </div>            
         

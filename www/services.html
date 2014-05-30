@@ -96,7 +96,9 @@
             function setHref(val_id){
             	window.location = "gallery-detail.html?item_id="+val_id;
             }
-            
+     
+	var place_order = window.localStorage.getItem("place_order");
+		       
 	//Load the menu list
 	var output = $('#selected_menu_items');
 	var user_id = window.localStorage.getItem("user_id");
@@ -121,9 +123,10 @@
                             +'<a class="album-detail group">'
                               +  '<span class="left"> '+item.item_name+' </span>'
                               + '<span class="right">  $'+item.price+'  </span>'
-                           + '</a>'
-                           
-                              + '<span class="right"><input type="checkbox" onClick="change_the_cart('+item.item_id+');" class="squaredOne" id="chkbut'+item.item_id+'" /><lable id="chklbl'+item.item_id+'" class="lbl"><b>Check</b></lable>'
+                           + '</a>';
+                        if(window.place_order != "true")
+						{
+                           menu=menu + '<span class="right"><input type="checkbox" onClick="change_the_cart('+item.item_id+');" class="squaredOne" id="chkbut'+item.item_id+'" /><lable id="chklbl'+item.item_id+'" class="lbl"><b>Check</b></lable>'
                               + '<select class="noOfItems" onchange="update_cart('+item.item_id+');" id="noItems'+item.item_id+'" >'
                               + 	'<option value="1">1</option>'
                               + 	'<option value="2">2</option>'
@@ -135,8 +138,13 @@
                               + 	'<option value="8">8</option>'
                               + 	'<option value="9">9</option>'
                               + 	'<option value="10">10</option>'
-                              + '</select>'
-                              +'</span>'
+                              + '</select>';
+                        }
+                        else
+                        {
+                        	 menu=menu + '<label>No Of Items : '+noOfItems+'</label>';
+                        }
+                         menu=menu +'</span>'
                         +'</li>';
 				output.append(menu);
 				check_item_available_in_cart(item.item_id);
@@ -234,6 +242,24 @@
 	}
 	}
 	
+	function place_order_func(){
+		if(window.validate_count != 0){
+			if(window.place_order == "true")
+			{
+				document.getElementById("place_button").value="Order is placed.";
+				document.getElementById("place_button").disabled=true;
+			}
+			else
+			{
+				window.localStorage.setItem("place_order", "true");
+				window.location = "services.html";
+			}
+		}
+		else
+		{
+			alert("You have to select at least one item.");
+		}
+	}
         </script>
             
                         <div id="footer" class="footer">
@@ -247,7 +273,24 @@
                     </div>
                     <div class="slogan right">
                         <span id="final_amount"> </span>
+                        <input type="button" id="place_button" onclick="place_order_func();" style="background-color: #45484D; "  />
                      </div>
+                     
+                        <script>
+            	  
+    	var place_order = window.localStorage.getItem("place_order");
+    	
+		if(place_order == "true")
+		{
+			document.getElementById("place_button").value="Order is placed";
+			document.getElementById("place_button").disabled=true;
+		}
+		else
+		{
+			document.getElementById("place_button").value="Place your Order";
+		}
+	
+            </script>      
                 </div>
             </div>            
         
