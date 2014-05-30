@@ -84,6 +84,7 @@
             <div class="ui-body margpage">
                 
                 <div class="gallery">
+                	<h4 id="table_no"> </h4>
                     <ul id="menu_items">
                     </ul>
                 </div>
@@ -91,12 +92,20 @@
             </div>
             
             
-            <script type="text/javascript">
+   <script type="text/javascript">
+    var order_id = window.localStorage.getItem("order_id");
+    var table_no = window.localStorage.getItem("table_no");
+    if(order_id == null || order_id == ""){
+  		window.location = "start-order.html";
+    }
             
-            function setHref(val_id){
-            	window.location = "gallery-detail.html?item_id="+val_id;
-            }
-            
+    function setHref(val_id){
+       window.location = "gallery-detail.html?item_id="+val_id;
+    }
+    
+    window.onload = function(){
+    	document.getElementById("table_no").innerHTML="Selected Table No : "+table_no;
+    };
 	//Load the menu list
 	var output = $('#menu_items');
 	$.ajax({

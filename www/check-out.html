@@ -155,15 +155,16 @@
 			output.text('There was an error loading the data.');
 		}
 	});
-		
 	}
 	
 	function confirm_order(){
 	var user_id = window.localStorage.getItem("user_id");
+    var order_id = window.localStorage.getItem("order_id");
+    alert(order_id);
 	$.ajax({
 		type: 'GET',
 		url: 'http://www.councilofcoders.com/phonegap/confirm_order.php',
-		data: {usr_id: user_id}, 
+		data: {usr_id: user_id,order_id:order_id}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
 		timeout: 50000000,
@@ -171,6 +172,8 @@
 			if(data.res == "1")
 			{
 				alert("Successfully accepted your order.");
+				localStorage.removeItem('order_id');
+				localStorage.removeItem('table_no');
 				window.location ="index.html";
 			}
 			else
