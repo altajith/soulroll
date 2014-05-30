@@ -22,6 +22,10 @@
     -->
     <feature name="http://api.phonegap.com/1.0/device" />
 
+	<gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.4.0">
+   	 	<param name="APP_ID" value="253358048200602" />
+   	 	<param name="APP_NAME" value="Soull Roll 64" />
+	</gap:plugin>
     <!--
         If you do not want any permissions to be added to your app, add the
         following tag to your config.xml; you will still have the INTERNET
