@@ -288,10 +288,12 @@ function update_cart(uitem_id){
 			{
 				document.getElementById("place_button").value="Order is placed.";
 				document.getElementById("place_button").disabled=true;
+				
 			}
 			else
 			{
 				window.localStorage.setItem("place_order", "true");
+				cart_to_kichen();
 				window.location = "services.html";
 			}
 		}
@@ -299,6 +301,24 @@ function update_cart(uitem_id){
 		{
 			alert("You have to select at least one item.");
 		}
+	}
+	
+	function cart_to_kichen(){
+		
+		var user_id = window.localStorage.getItem("user_id");
+		$.ajax({
+				type: 'GET',
+				url: 'http://www.councilofcoders.com/phonegap/cart_to_kitchen.php',
+				data: { user_id: user_id, order_id: window.order_id}, 
+				dataType: 'jsonp',
+				jsonp: 'jsoncallback',
+				timeout: 50000000,
+				success: function(data, status){
+				},
+				error: function(){
+					output.text('There was an error loading the data.');
+				}
+				});
 	}
         </script>
    
