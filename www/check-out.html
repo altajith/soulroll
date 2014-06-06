@@ -85,6 +85,11 @@
              <div class="ui-body margpage">
                 
                 <div class="gallery">
+                    <h3> Packages </h3>
+                    <ul id="selected_package">
+                    </ul>
+                    
+                	<h3> Menu Items </h3>
                     <ul id="selected_menu_items">
                     </ul>
                 </div>
@@ -125,6 +130,41 @@
                         +'</li>';
 				output.append(menu);
 				check_item_available_in_cart(item.item_id);
+			
+			});
+			document.getElementById("final_amount").innerHTML="Total Amount : $"+total_amount;
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	
+	//Load packages
+	var output_selected_package = $('#selected_package');
+	$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/get_packages_from_cart.php',
+		data: {usr_id: user_id}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+			$.each(data, function(i,item){ 
+				total_amount = parseInt(total_amount) + (parseInt(item.price));
+				
+				var menu = '<li>'
+                            +'<a onclick="setHref('+item.pack_id+');" class="album-photo"  style="height:200px !important;">'
+                               +' <span class="counter">'+(i+1)+'</span>'
+                               +' <img src="'+item.pack_image_path+'" style="height:100% !important;" alt="Album 1" />'
+                          + '</a>'
+                            +'<a class="album-detail group">'
+                              +  '<span class="left"> '+item.pack_name+' </span>'
+                              + '<span class="right">  $'+item.price+'  </span>'
+                           + '</a>';
+                        
+                        menu=menu +'</span>'
+                        +'</li>';
+				output_selected_package.append(menu);
 			
 			});
 			document.getElementById("final_amount").innerHTML="Total Amount : $"+total_amount;
