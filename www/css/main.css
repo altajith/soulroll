@@ -1033,6 +1033,8 @@ ul.general{
     color: #fff;
     h1, h2, h3{
         color: #fff;
+        font-style:italic;
+        
     }
     #header, .header{
     	background-color: @themeColor;
@@ -1105,6 +1107,7 @@ ul.general{
     h1{
         color: #fff;
         font-family: @font-j;
+        font-style:italic;
         font-size: 27px;
         font-weight: 300;
         text-shadow: none;
