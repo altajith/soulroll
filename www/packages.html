@@ -111,7 +111,7 @@
 				}
 				 menu = menu+' <li>'
                            + '<div class="content-box no-pad type-2">'
-                            + '<div class="image"> <img style="width:800px; height:275px;" src="'+item.pack_image_path+'" alt="Image" /> </div>'
+                            + '<div class="image"> <a onclick="setHref('+item.pack_id+');"><img style="width:800px; height:275px;" src="'+item.pack_image_path+'" alt="Image" /></a> </div>'
                              + '<a href="#" class="head group pad title">'+item.pack_name+'</a>'
                               + '<div class="content pad">'
                                +'<span>Package Type : '+item.pack_type+'</span><br/>'
@@ -211,6 +211,10 @@
      
     
     function setHref(val_id){
+       window.location = "package-detail.html?pack_id="+val_id;
+    }
+    
+    function setHref_Item(val_id){
        window.location = "gallery-detail.html?item_id="+val_id;
     }
     
@@ -227,7 +231,7 @@
 		success: function(data, status){
  			var items_out = $('#items_out'+pack_id);
 			$.each(data, function(i,item){
-				var item_html='<a href="#" onclick="setHref('+item.item_id+');" ><span>'+(i+1)+' : '+item.item_name+'</span></a><br/>';
+				var item_html='<a href="#" onclick="setHref_Item('+item.item_id+');" ><span>'+(i+1)+' : '+item.item_name+'</span></a><br/>';
 	
 				items_out.append(item_html);       
 			});
