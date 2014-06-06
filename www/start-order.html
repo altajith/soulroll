@@ -159,64 +159,117 @@
 			});
 			
 		function set_order(){
-			var user_id = window.localStorage.getItem("user_id");
-			var pass_table_id=document.getElementById("table_select").value;
-			var name=document.getElementById("name").value;
-			var noOfPeople=document.getElementById("noOfPeople").value;
-			var tel=document.getElementById("tel").value;
-			var date=document.getElementById("date").value;
-			var time=document.getElementById("time").value;
+			if(validate()){
+				var user_id = window.localStorage.getItem("user_id");
+				var pass_table_id=document.getElementById("table_select").value;
+				var name=document.getElementById("name").value;
+				var noOfPeople=document.getElementById("noOfPeople").value;
+				var tel=document.getElementById("tel").value;
+				var date=document.getElementById("date").value;
+				var time=document.getElementById("time").value;
 			
-   			if(order_id == null || order_id == ""){
-				$.ajax({
-				type: 'GET',
-				url: 'http://www.councilofcoders.com/phonegap/set_start_order.php',
-				data: { table_no: pass_table_id, user_id: user_id,name:name,noOfPeople:noOfPeople,tel:tel,date:date,time:time}, 
-				dataType: 'jsonp',
-				jsonp: 'jsoncallback',
-				timeout: 50000000,
-				success: function(data, status){
-					window.localStorage.setItem("table_no", pass_table_id);
-					window.localStorage.setItem("order_id", data.order_id);
-					window.localStorage.setItem("name", name);
-					window.localStorage.setItem("tel", tel);
-					window.location = "gallery.html";
-				},
-				error: function(){
-					output.text('There was an error loading the data.');
+   				if(order_id == null || order_id == ""){
+					$.ajax({
+					type: 'GET',
+					url: 'http://www.councilofcoders.com/phonegap/set_start_order.php',
+					data: { table_no: pass_table_id, user_id: user_id,name:name,noOfPeople:noOfPeople,tel:tel,date:date,time:time}, 
+					dataType: 'jsonp',
+					jsonp: 'jsoncallback',
+					timeout: 50000000,
+					success: function(data, status){
+						window.localStorage.setItem("table_no", pass_table_id);
+						window.localStorage.setItem("order_id", data.order_id);
+						window.localStorage.setItem("name", name);
+						window.localStorage.setItem("tel", tel);
+						window.location = "gallery.html";
+					},
+					error: function(){
+						output.text('There was an error loading the data.');
+					}
+					});
 				}
-				});
 			}
 		}
 		
 		 function validate(){
-            var pass_table_id=document.getElementById("table_select").value;
-			var name=document.getElementById("name").value;
-			var noOfPeople=document.getElementById("noOfPeople").value;
-			var tel=document.getElementById("tel").value;
-			var date=document.getElementById("date").value;
-			var time=document.getElementById("time").value;
+            var pass_table_id=document.getElementById("table_select");
+			var name=document.getElementById("name");
+			var noOfPeople=document.getElementById("noOfPeople");
+			var tel=document.getElementById("tel");
+			var date=document.getElementById("date");
+			var time=document.getElementById("time");
             	
             if(pass_table_id.value == "")
             {
-            	username.focus();
-            	username.style.border="thin solid red";
-            	username.placeholder="Please enter your email.";
+            	pass_table_id.focus();
+            	pass_table_id.style.border="thin solid red";
             	return false;
             }
             else
             {
-            	username.style.border="0px";
+            	pass_table_id.style.border="0px";
             }
-            	
-            if(password.value == "")
+            
+            if(name.value == "")
             {
-            	password.focus();
-				password.style.border="thin solid red";
-            	password.placeholder="Please enter your password.";
+            	name.focus();
+            	name.style.border="thin solid red";
+            	name.placeholder="Please enter your name.";
             	return false;
             }
-            	
+            else
+            {
+            	name.style.border="0px";
+            }
+            
+            if(noOfPeople.value == "")
+            {
+            	noOfPeople.focus();
+            	noOfPeople.style.border="thin solid red";
+            	noOfPeople.placeholder="Please enter the number of people.";
+            	return false;
+            }
+            else
+            {
+            	noOfPeople.style.border="0px";
+            }
+            
+            if(tel.value == "")
+            {
+            	tel.focus();
+            	tel.style.border="thin solid red";
+            	tel.placeholder="Please enter your mobile number.";
+            	return false;
+            }
+            else
+            {
+            	tel.style.border="0px";
+            }
+            
+            if(date.value == "")
+            {
+            	date.focus();
+            	date.style.border="thin solid red";
+            	date.placeholder="Please enter the reservation date.";
+            	return false;
+            }
+            else
+            {
+            	date.style.border="0px";
+            }
+            
+            if(time.value == "")
+            {
+            	time.focus();
+            	time.style.border="thin solid red";
+            	time.placeholder="Please enter the reservation time.";
+            	return false;
+            }
+            else
+            {
+            	time.style.border="0px";
+            }
+            
             return true;
           }
 		
