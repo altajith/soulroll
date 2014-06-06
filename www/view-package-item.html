@@ -76,8 +76,8 @@
         <div id="gallery-detail-page" class="page" data-theme="a" data-role="page">
             <div id="header" data-role="header">
                 <div class="margpage">
-                    <a href="check-out.html" class="menu-button "></a>
-                    <h1>Food Item</h1>                    
+                    <a href="gallery.html" class="menu-button "></a>
+                    <h1>Package</h1>                    
                     <a href="home.html" class="menu-button left">=</a>
                                     </div>
             </div>
@@ -91,6 +91,9 @@
                     </div>
                 </div>
                 
+                
+                
+
             </div>
             
             
@@ -104,6 +107,7 @@
                         </ul>
                     </div>
                     <div class="slogan right">
+                       
                     </div>
                 </div>
             </div>            
@@ -120,35 +124,71 @@
     	});
     	return vars;
   	}
-  
+  	
+  	var user_id = window.localStorage.getItem("user_id");
+    var place_order = window.localStorage.getItem("place_order");
 	var output = $('#menu_item');
-	var uitem_id = getUrlVars()["item_id"];
+	var upack_id = getUrlVars()["pack_id"];
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/get_selected_item.php',
-		data: { itm_id: uitem_id }, 
+		url: 'http://www.councilofcoders.com/phonegap/get_selected_package.php',
+		data: { pack_id: upack_id }, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
 		timeout: 50000000,
 		success: function(data, status){
 			$.each(data, function(i,item){ 
-				var menu = '<h4>'+item.item_name+'</h4>'
+				var menu = '<h4>'+item.pack_name+'</h4>'
 						+'<a class="item image" data-ajax="false">'
-                                       + '<img src="'+item.item_image_path+'" alt="Photo 1" />'
+                                       + '<img src="'+item.pack_image_path+'" alt="Photo 1" />'
                                    + '</a>'
                                    +'<p><br/>Price : $'+item.price+'<br/>'
                                    +'Available for : '+item.available_meal+'</br>'
-                                   +'Food Type : '+item.menu_type+'</br>'
-                                   +'Portion Size : '+item.portion_size+'</br>'
-                                   +'Additional Info : '+item.additional_info+'</br>';
-                         
+                                   +'Food Type : '+item.pack_type+'</br>'
+                                   +'Portion Size : '+item.package_size+'</br>'
+                                   +'Additional Info : '+item.additional_info
+                                   +'<p id="items_out'+item.pack_id+'"></p><br/>';
+                      
 				output.append(menu);
+				get_menu_items_per_package(item.pack_id);
 			});
 		},
 		error: function(){
 			output.text('There was an error loading the data.');
 		}
 	});
+	
+	
+	function get_menu_items_per_package(pass_pack_id){
+		
+		var pack_id = pass_pack_id;
+		$.ajax({
+		type: 'GET',
+		url: 'http://www.councilofcoders.com/phonegap/get_menu_items_per_pack.php',
+		data: {pack_id: pack_id}, 
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 5000,
+		success: function(data, status){
+ 			var items_out = $('#items_out'+pack_id);
+ 			items_out.append("<b>Menu Items</b><br/>");
+ 			
+			$.each(data, function(i,item){
+				var item_html='<a href="#" onclick="setHref_Item('+item.item_id+');" ><span>'+(i+1)+' : '+item.item_name+'</span></a><br/>';
+	
+				items_out.append(item_html);       
+			});
+			
+		},
+		error: function(){
+			output.text('There was an error loading the data.');
+		}
+	});
+	}
+	
+	function setHref_Item(val_id){
+       window.location = "view-food-item.html?item_id="+val_id;
+    }
 	
         </script>
     </body>
