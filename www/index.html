@@ -3,7 +3,7 @@
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8" />
-        <title>Water Mobile</title>
+        <title>Soul Roll 64</title>
         <meta name="description" content="" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" />
@@ -91,7 +91,7 @@
                      
                         
                         <li>
-                            <a href="gallery.html" class="menu-item">
+                            <a href="#" onclick="setHref(1);" class="menu-item">
                                 <img src="images/home-icons/icon-gallery.png" alt="Gallery" />
                                 <span>Menu</span>
                             </a>
@@ -99,36 +99,36 @@
                         
                         
                         <li>
-                            <a href="packages.html" class="menu-item">
+                            <a href="#" onclick="setHref(2);" class="menu-item">
                                 <img src="images/home-icons/icon-careers.png" alt="Join Us" />
                                 <span>Packages</span>
                             </a>
                         </li>
                         
                         <li>
-                            <a href="services.html" class="menu-item">
+                            <a href="#" onclick="setHref(3);" class="menu-item">
                                 <img src="images/home-icons/icon-blog.png" alt="Blog" />
                                 <span>My Order</span>
                             </a>
                         </li>
                         
                         <li>
-                            <a href="check-out.html" class="menu-item">
+                            <a href="#" onclick="setHref(4);" class="menu-item">
                                 <img src="images/home-icons/icon-products.png" alt="Services" />
                                 <span>Check Out</span>
                             </a>
                         </li>
                         
                         <li>
-                            <a href="check-out.html" class="menu-item">
+                            <a href="#" onclick="setHref(5);" class="menu-item">
                                 <img src="images/home-icons/icon-products.png" alt="Services" />
                                 <span>Sign Out</span>
                             </a>
                         </li>
                         
                         <li>
-                            <a href="check-out.html" class="menu-item">
-                                <img src="images/home-icons/icon-products.png" alt="Services" />
+                            <a href="#" onclick="setHref(6);" class="menu-item">
+                                <img src="images/home-icons/icon-about.png" alt="Services" />
                                 <span>About Us</span>
                             </a>
                         </li>
@@ -136,7 +136,26 @@
                     </ul>
                         
                 </div>
-                
+                <script>
+                function setHref(id){
+                	var url="";
+                	if(id == 1){
+                		url="gallery.html";
+                	}else if(id == 2){
+                		url="packages.html";
+                	}else if(id == 3){
+                		url="services.html";
+                	}else if(id == 4){
+                		url="check-out.html";
+                	}else if(id == 5){
+                		url="sign-out.html";
+                	}else if(id == 6){
+                		url="about.html";
+                	}
+                	
+       				window.location =url;
+   				}
+                </script>
             </div>
             <div id="footer" data-role="footer">
                 <div class="padpage group">

@@ -78,7 +78,7 @@
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
                     <h1>Packages</h1>
-                    <a href="home.html" class="menu-button left">=</a>
+                    <a href="index.html" class="menu-button left"><</a>
                 </div>
             </div>
             <div class="ui-body margpage">
@@ -93,6 +93,10 @@
  	var user_id = window.localStorage.getItem("user_id");
  	var order_id = window.localStorage.getItem("order_id");
  	
+    if(order_id == null || order_id == ""){
+  		window.location = "start-order.html";
+    }
+    
     var output = $('#pack_items');
 	$.ajax({
 		url: 'http://www.councilofcoders.com/phonegap/get_packages.php',
