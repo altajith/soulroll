@@ -184,7 +184,7 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Added to the cart;");
+					alert("Added to the cart");
 					validate_count++;
 				}
 		},
@@ -207,7 +207,7 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Removed from the cart;");
+					alert("Removed from the cart");
 					validate_count--;
 				}
 		},
@@ -304,7 +304,6 @@ function update_cart(uitem_id){
 	}
 	
 	function cart_to_kichen(){
-		
 		var user_id = window.localStorage.getItem("user_id");
 		$.ajax({
 				type: 'GET',

@@ -18,11 +18,26 @@ textarea {
     color: #222;
 }
 
+.button2{
+	background-color: rgba(0, 0, 0, 0.9);
+	background: rgba(0, 0, 0, 0.9);
+	color: rgba(255, 255, 255, 1);
+
+	border:hidden 2px #000000;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+
+}
+
 body {
     font-size: 1em;
     line-height: 1.4;
 }
 
+.transparent{
+background:rgba(255,255,0,3);
+}
 
 /*
  * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
@@ -339,7 +354,6 @@ a, a:active, a:visited, a:hover{
     float: right !important;
 }
 
-
 ul.child-left{    
     li{
         float: left;
@@ -599,6 +613,36 @@ h3{
    &.margbottom{
       margin-bottom: 9%;
    }
+}
+
+.marglespage{
+   margin-left: 0;
+   margin-right: 0;
+   position: relative;
+   
+   &.margtop{
+      margin-top: 0;
+   }
+   &.margbottom{
+      margin-bottom: 0;
+   }
+}
+
+img.logo{
+	width:50%;
+    height: auto;
+	
+}
+
+img.menuicon{
+	width: 30%;
+	height: auto;
+}
+
+img.menuicon2{
+	margin-bottom: 8%;
+	width: 80%;
+	height: auto;
 }
 
 
@@ -1041,12 +1085,13 @@ ul.general{
     margin-bottom: 10px;
 }
 
-
-
-
-
-
-
+.orangebar{
+    	background-color: orange;
+    	width:100%;
+    	height: 10%;
+    	display:block;
+   clear:both;
+   }
 
 
 
@@ -1060,11 +1105,15 @@ ul.general{
     position: absolute;
     left: 0;
     top: 0;
-    background: url(../images/black-overlay.png) repeat 0 0;
     z-index: 0;
+    border-bottom: 0;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0, 0, 0, .75)), to(rgba(255, 255, 255, .25))), -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, .7)), color-stop(0.501, rgba(0, 0, 0, 0)), color-stop(1, rgba(0, 0, 0, 0)));
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, .75), rgba(255, 255,255, .25)), -moz-linear-gradient(left top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .7) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0));
+    background: linear-gradient(top, rgba(0, 0, 0, .75), rgba(255, 255, 255, .25)), linear-gradient(left top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .7) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0));
 }
+
 #home-page{
-    background: url(../images/bg.jpg) #000 no-repeat;
+    background: url(../images/bg.png) #000 no-repeat;
     /*background: url(http://lorempixel.com/1024/576/) #000 no-repeat;*/
     background-size: auto 100%;
     color: #fff;
@@ -1541,87 +1590,27 @@ ul.general{
 }
 
 
-/*ErbenLab Developers : Ajith Prasanna*/
-/* SQUARED ONE */
-.squaredOne {
-	width: auto;
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (max-width : 640px) and (orientation: landscape) {
+/* Styles */
+img.logo{
+	width:25%;
+    height: auto;
+	
+}
+
+img.menuicon{
+	margin-bottom: 5%;
+	margin-left:40%;
+	width: 15%;
 	height: auto;
-	background: #fcfff4;
-
-	background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
-	-webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-	-moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-	box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-	position: relative;
 }
 
-.squaredOne {
-	cursor: pointer;
-	position: absolute;
-	width: 20px;
-	height: 20px;
-	left: 0px;
-	top: 0px;
-
-	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
-	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
-	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
-
-	background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
-	background: -moz-linear-gradient(top, #222 0%, #45484d 100%);
-	background: -o-linear-gradient(top, #222 0%, #45484d 100%);
-	background: -ms-linear-gradient(top, #222 0%, #45484d 100%);
-	background: linear-gradient(top, #222 0%, #45484d 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#45484d',GradientType=0 );
+img.menuicon2{
+	margin-bottom: 5%;
+	width: 30%;
+	height: auto;
 }
 
-.squaredOne:after {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	filter: alpha(opacity=0);
-	opacity: 0;
-	content: '';
-	position: absolute;
-	width: 16px;
-	height: 16px;
-	background: #00bf00;
-
-	background: -webkit-linear-gradient(top, #00bf00 0%, #009400 100%);
-	background: -moz-linear-gradient(top, #00bf00 0%, #009400 100%);
-	background: -o-linear-gradient(top, #00bf00 0%, #009400 100%);
-	background: -ms-linear-gradient(top, #00bf00 0%, #009400 100%);
-	background: linear-gradient(top, #00bf00 0%, #009400 100%);
-
-	top: 2px;
-	left: 2px;
-
-	-webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-	-moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-	box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
 }
-
-.lbl{
-	cursor: pointer;
-	position: absolute;
-	width: auto;
-	height: 20px;
-	left: 20px;
-	top: 0px;
-}
-
-.noOfItems{
-	cursor: pointer;
-	position: absolute;
-	width: auto;
-	height: 20px;
-	left: 70px;
-	top: 0px;
-}
-
-
-
-
