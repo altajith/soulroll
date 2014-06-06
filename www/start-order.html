@@ -90,8 +90,34 @@
                 				</tr>
                 				
                 				<tr>
+                					<td >Name</td>
+                					<td > <input type="text" class="input theme-text" id="time"></td>
+                				</tr>
+                				
+                				<tr>
+                					<td >No Of People</td>
+                					<td > <input type="text" class="input theme-text" id="time"></td>
+                				</tr>
+                				
+                				<tr>
+                					<td >Mobile</td>
+                					<td > <input type="text" class="input theme-text" id="time"></td>
+                				</tr>
+                				
+                				
+                				<tr>
+                					<td >Date</td>
+                					<td > <input type="date" class="input theme-text" id="date"></td>
+                				</tr>
+                				
+                				<tr>
+                					<td >Time</td>
+                					<td > <input type="time" class="input theme-text" id="time"></td>
+                				</tr>
+                				
+                				<tr>
                 					<td> </td>
-                					<td > <input type="button" onclick="set_order();" value="Start the Order" style="background-color: #45484D;" class="button" /> </td>
+                					<td > <input type="button" class="button2" id="submit" onclick="set_order();" value="Start the Order" style="background-color: #45484D;" /> </td>
                 				</tr>
                 		</table>
                 		<br/>
@@ -112,7 +138,7 @@
 				jsonp: 'jsoncallback',
 				timeout: 50000000,
 				success: function(data, status){
-					var tables = '<select class="noOfItems" id="table_select">'
+					var tables = '<select class="noOfItems" id="table_select" class="input theme-text">'
 								+'<option value="">Select Table</option>';
 					$.each(data, function(i,item){ 
 						tables = tables+ '<option value="'+item.tb_auto+'">'+item.table_name+'</option>';
