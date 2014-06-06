@@ -1041,6 +1041,12 @@ ul.general{
         h1, h2, h3{
             color: #FFFFFF;
         }
+        a{
+        	img{
+        		width:100%;
+        		height:auto;
+        	}
+        }
     }
     .content{
         color: @textColor;
