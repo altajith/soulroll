@@ -123,7 +123,7 @@
 				var menu = '<li>'
                             +'<a onclick="setHref('+item.item_id+');" class="album-photo"  style="height:200px !important;">'
                                +' <span class="counter">'+(i+1)+'</span>'
-                               +' <img src="'+item.item_image_path+'" style="height:100% !important;" alt="Album 1" />'
+                               +' <img src="'+item.item_image_path+'" style="height:100% !important;" />'
                           + '</a>'
                             +'<a class="album-detail group">'
                               +  '<span class="left"> '+item.item_name+' </span>'
@@ -186,14 +186,13 @@
                            + '</a>';
                         if(window.place_order != "true")
 						{
-                           menu=menu + '<span class="right"><input type="checkbox" onClick="change_the_cart('+item.pack_id+');" class="squaredOne" id="chkbut'+item.pack_id+'" />'
-                         			 +'<lable id="chklbl'+item.pack_id+'" class="lbl"><b>Check</b></lable>';
+                           menu=menu + '<span class="right"><a onClick="remove_package('+item.pack_id+');" class="button2" id="chkbut_p'+item.pack_id+'" style="cursor:pointer; margin-top:-23px; margin-right:10px; color:red;">Remove</a>';
+                         			
                         }
                         
                         menu=menu +'</span>'
                         +'</li>';
 				output_selected_package.append(menu);
-				//check_item_available_in_cart(item.item_id);
 			
 			});
 			document.getElementById("final_amount").innerHTML="Total Amount : $"+total_amount;
@@ -203,6 +202,27 @@
 		}
 	});
 	
+	function remove_package(pack_id){
+    	$.ajax({
+			type: 'GET',
+			url: 'http://www.councilofcoders.com/phonegap/remove_from_package_cart.php',
+			data: {pack_id: pack_id, user_id:window.user_id}, 
+			dataType: 'jsonp',
+			jsonp: 'jsoncallback',
+			timeout: 5000,
+			success: function(data, status){
+ 				if(data.res == "1"){
+					
+					alert("Removed from the cart;");
+					location.reload();
+				}
+			
+			},
+			error: function(){
+				output.text('There was an error loading the data.');
+			}
+		});
+   	} 
 	
 	function change_the_cart(uitem_id){
 		if(document.getElementById("chkbut" + uitem_id).checked != true)
@@ -247,7 +267,6 @@
 		success: function(data, status){
 			if(data.res == "1")
 			{
-				
 				document.getElementById('chkbut' + uitem_id).checked=true;
 				document.getElementById('noItems' + uitem_id).value=data.noOfItems;
 			}
@@ -289,6 +308,26 @@
 	}
 	}
 	
+	function cart_to_kichen(){
+		$.ajax({
+			type: 'GET',
+			url: 'http://www.councilofcoders.com/phonegap/cart_to_kitchen.php',
+			data: { user_id: window.user_id, order_id: window.order_id}, 
+			dataType: 'jsonp',
+			jsonp: 'jsoncallback',
+			timeout: 50000000,
+			success: function(data, status){
+			},
+			error: function(){
+				output.text('There was an error loading the data.');
+			}
+		});
+	}
+	
+	function confirm_order(){
+		window.location ="services.html";
+	}
+	
 	function place_order_func(){
 		if(window.validate_count != 0){
 			if(window.place_order == "true")
@@ -299,6 +338,7 @@
 			else
 			{
 				window.localStorage.setItem("place_order", "true");
+				cart_to_kichen();
 				window.location = "services.html";
 			}
 		}
