@@ -91,28 +91,28 @@
                 				
                 				<tr>
                 					<td >Name</td>
-                					<td > <input type="text" class="input theme-text" id="time"></td>
+                					<td > <input type="text" id="name" class="input theme-text" id="time"></td>
                 				</tr>
                 				
                 				<tr>
                 					<td >No Of People</td>
-                					<td > <input type="text" class="input theme-text" id="time"></td>
+                					<td > <input type="text" id="noOfPeople" class="input theme-text" id="time"></td>
                 				</tr>
                 				
                 				<tr>
                 					<td >Mobile</td>
-                					<td > <input type="text" class="input theme-text" id="time"></td>
+                					<td > <input type="text" id="tel" class="input theme-text" id="time"></td>
                 				</tr>
                 				
                 				
                 				<tr>
                 					<td >Date</td>
-                					<td > <input type="date" class="input theme-text" id="date"></td>
+                					<td > <input type="date" id="date" class="input theme-text" id="date"></td>
                 				</tr>
                 				
                 				<tr>
                 					<td >Time</td>
-                					<td > <input type="time" class="input theme-text" id="time"></td>
+                					<td > <input type="time" id="time" class="input theme-text" id="time"></td>
                 				</tr>
                 				
                 				<tr>
@@ -124,8 +124,15 @@
                 </div>
             </div>
             
-            
             <script>
+            var local_name=window.localStorage.getItem("name");
+            var local_tel=window.localStorage.getItem("tel");
+            
+            window.onload=function(){
+            	document.getElementById("name").value=window.local_name;
+            	document.getElementById("tel").value=window.local_tel;
+            };
+              
             var output_table = $('#table_names');
             var order_id = window.localStorage.getItem("order_id");
             if(order_id != null){
@@ -154,17 +161,25 @@
 		function set_order(){
 			var user_id = window.localStorage.getItem("user_id");
 			var pass_table_id=document.getElementById("table_select").value;
+			var name=document.getElementById("name").value;
+			var noOfPeople=document.getElementById("noOfPeople").value;
+			var tel=document.getElementById("tel").value;
+			var date=document.getElementById("date").value;
+			var time=document.getElementById("time").value;
+			
    			if(order_id == null || order_id == ""){
 				$.ajax({
 				type: 'GET',
 				url: 'http://www.councilofcoders.com/phonegap/set_start_order.php',
-				data: { table_no: pass_table_id, user_id: user_id}, 
+				data: { table_no: pass_table_id, user_id: user_id,name:name,noOfPeople:noOfPeople,tel:tel,date:date,time:time}, 
 				dataType: 'jsonp',
 				jsonp: 'jsoncallback',
 				timeout: 50000000,
 				success: function(data, status){
 					window.localStorage.setItem("table_no", pass_table_id);
 					window.localStorage.setItem("order_id", data.order_id);
+					window.localStorage.setItem("name", name);
+					window.localStorage.setItem("tel", tel);
 					window.location = "gallery.html";
 				},
 				error: function(){
@@ -173,6 +188,37 @@
 				});
 			}
 		}
+		
+		 function validate(){
+            var pass_table_id=document.getElementById("table_select").value;
+			var name=document.getElementById("name").value;
+			var noOfPeople=document.getElementById("noOfPeople").value;
+			var tel=document.getElementById("tel").value;
+			var date=document.getElementById("date").value;
+			var time=document.getElementById("time").value;
+            	
+            if(pass_table_id.value == "")
+            {
+            	username.focus();
+            	username.style.border="thin solid red";
+            	username.placeholder="Please enter your email.";
+            	return false;
+            }
+            else
+            {
+            	username.style.border="0px";
+            }
+            	
+            if(password.value == "")
+            {
+            	password.focus();
+				password.style.border="thin solid red";
+            	password.placeholder="Please enter your password.";
+            	return false;
+            }
+            	
+            return true;
+          }
 		
             </script>
             
