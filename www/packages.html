@@ -247,21 +247,6 @@
 	});
 	}
 	
-	function cart_to_kichen(){
-		$.ajax({
-			type: 'GET',
-			url: 'http://www.councilofcoders.com/phonegap/cart_to_kitchen.php',
-			data: { user_id: window.user_id, order_id: window.order_id}, 
-			dataType: 'jsonp',
-			jsonp: 'jsoncallback',
-			timeout: 50000000,
-			success: function(data, status){
-			},
-			error: function(){
-				output.text('There was an error loading the data.');
-			}
-		});
-	}
 	
 	function confirm_order(){
 		window.location ="services.html";
@@ -280,8 +265,20 @@
 			else
 			{
 				window.localStorage.setItem("place_order", "true");
-				cart_to_kichen();
-				window.location = "services.html";
+				$.ajax({
+					type: 'GET',
+					url: 'http://www.councilofcoders.com/phonegap/cart_to_kitchen.php',
+					data: { user_id: window.user_id, order_id: window.order_id}, 
+					dataType: 'jsonp',
+					jsonp: 'jsoncallback',
+					timeout: 50000000,
+					success: function(data, status){
+						window.location = "services.html";
+					},
+					error: function(){
+						output.text('There was an error loading the data.');
+					}
+				});
 			}
 		}
 		else
