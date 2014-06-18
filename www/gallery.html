@@ -93,7 +93,14 @@
                     <ul id="menu_items">
                     </ul>
                 </div>
-
+				   <div class="social left ">
+                    	<input type="button" id="my_order_button" onclick="confirm_order();" class="button2" value="My Order" />
+                        
+                    </div> 
+                    <div class="slogan right">
+                    	
+                    	<input type="button" id="place_button" onclick="place_order_func();" class="button2"  />
+                    </div>
             </div>
             
             
@@ -148,7 +155,7 @@
                               + 	'<option value="10">10</option>'
                               + '</select>'
                               +'</span>'
-                        +'</li>';
+                        +'</li><br/>';
                        }
 				output.append(menu);
 				check_item_available_in_cart(item.item_id);
@@ -334,15 +341,13 @@ function update_cart(uitem_id){
                         <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
-                    	<input type="button" id="my_order_button" onclick="confirm_order();" style="background-color: #45484D; " value="My Order" />
-                        
+                    	  
                         Designed @ ErbenLabs
 
                     </div> 
                     <div class="slogan right">
                     	
-                    	<input type="button" id="place_button" onclick="place_order_func();" style="background-color: #45484D;"  />
-                    </div>
+                     </div>
             <script>
             	  
     	var place_order = window.localStorage.getItem("place_order");

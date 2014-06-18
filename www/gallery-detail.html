@@ -78,7 +78,7 @@
                 <div class="margpage">
                     <a href="gallery.html" class="menu-button "></a>
                     <h1>Food Item</h1>                    
-                    <a href="home.html" class="menu-button left">=</a>
+                    <a href="gallery.html" class="menu-button left"><</a>
                                     </div>
             </div>
             <div class="ui-body margpage">
@@ -95,20 +95,20 @@
                 </div>
                 
                 
-                
+                <input type="button" class="button2" onclick="confirm_order();"  value="My Order" />
+                  
+               
 
             </div>
             
-            
-                        <div id="footer" class="footer">
+                     <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
                         Designed @ ErbenLabs
 
                     </div>
                     <div class="slogan right">
-                        <input type="button" onclick="confirm_order();" style="background-color: #45484D; " value="My Order" />
-                  
+                        
                     </div>
                 </div>
             </div>            
@@ -140,7 +140,7 @@
 			$.each(data, function(i,item){ 
 				var menu = '<h4>'+item.item_name+'</h4>'
 						+'<a class="item image" data-ajax="false">'
-                                       + '<img src="'+item.item_image_path+'" alt="Photo 1" />'
+                                       + '<img style="width:100%; height:auto;" src="'+item.item_image_path+'" alt="Photo 1" />'
                                    + '</a>'
                                    +'<p><br/>Price : $'+item.price+'<br/>'
                                    +'Available for : '+item.available_meal+'</br>'

@@ -89,6 +89,14 @@
                 <div  id="pack_items">
                 
                 </div>
+                
+                 <div class="social left ">
+                    	<input type="button" id="my_order_button" onclick="confirm_order();" class="button2" value="My Order" />
+                       
+                    </div>
+                    <div class="slogan right">
+                       <input type="button" id="place_button" onclick="place_order_func();" class="button2"  />
+                    </div>
             </div>
             
  <script>
@@ -118,7 +126,7 @@
 				}
 				 menu = menu+' <li>'
                            + '<div class="content-box no-pad type-2">'
-                            + '<div class="image"> <a onclick="setHref('+item.pack_id+');"><img style="width:100%; height:275px;" src="'+item.pack_image_path+'" /></a> </div>'
+                            + '<div class="image"> <a onclick="setHref('+item.pack_id+');"><img style="width:100%; height:auto;" src="'+item.pack_image_path+'" /></a> </div>'
                              + '<a href="#" class="head group pad title">'+item.pack_name+'</a>'
                               + '<div class="content pad">'
                                +'<span>Package Type : '+item.pack_type+'</span><br/>'
@@ -299,12 +307,10 @@
                         <div id="footer" class="footer">
                 <div class="padpage group">
                     <div class="social left ">
-                    	<input type="button" id="my_order_button" onclick="confirm_order();" style="background-color: #45484D; " value="My Order" />
-                         Designed @ ErbenLabs
+                    	 Designed @ ErbenLabs
 
                     </div>
                     <div class="slogan right">
-                       <input type="button" id="place_button" onclick="place_order_func();" style="background-color: #45484D;"  />
                     </div>
                 </div>
             </div>            

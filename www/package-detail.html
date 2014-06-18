@@ -94,7 +94,13 @@
                     </div>
                 </div>
                 
-                
+                 <div class="social left ">
+                  
+                    </div>
+                    <div class="slogan right">
+                        <input type="button" onclick="confirm_order();" class="button2" value="My Order" />
+                  
+                    </div>
                 
 
             </div>
@@ -107,8 +113,7 @@
 
                     </div>
                     <div class="slogan right">
-                        <input type="button" onclick="confirm_order();" style="background-color: #45484D; " value="My Order" />
-                  
+                        
                     </div>
                 </div>
             </div>            
@@ -141,7 +146,7 @@
 			$.each(data, function(i,item){ 
 				var menu = '<h4>'+item.pack_name+'</h4>'
 						+'<a class="item image" data-ajax="false">'
-                                       + '<img src="'+item.pack_image_path+'" alt="Photo 1" />'
+                                       + '<img style="width:100%; height:auto;" src="'+item.pack_image_path+'" alt="Photo 1" />'
                                    + '</a>'
                                    +'<p><br/>Price : $'+item.price+'<br/>'
                                    +'Available for : '+item.available_meal+'</br>'
