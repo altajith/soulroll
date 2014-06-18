@@ -52,6 +52,7 @@
         <!--<script src="js/vendor/zepto.min.js"></script>-->
 
         <script src="js/jquery-1.8.2.min.js"></script>
+        <script src="js/jquery.mobile-1.2.0.min.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/jquery.flexslider-min.js"></script>
         <script src="js/photoswipe/klass.min.js"></script>
@@ -68,8 +69,7 @@
             g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
             s.parentNode.insertBefore(g,s)}(document,"script"));
         </script>
-     
-	<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>   
+        
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
         <!-- Add your site or application content here -->
@@ -109,12 +109,11 @@
     var order_id = window.localStorage.getItem("order_id");
     var table_no = window.localStorage.getItem("table_no");
     if(order_id == null || order_id == ""){
-  		$.mobile.navigate("start-order.html");
+  		window.location = "start-order.html";
     }
          
     function setHref(val_id){
        window.location = "gallery-detail.html?item_id="+val_id;
-       
     }
     
     window.onload = function(){
@@ -322,7 +321,7 @@ function update_cart(uitem_id){
 					jsonp: 'jsoncallback',
 					timeout: 50000000,
 					success: function(data, status){
-						$.mobile.navigate("services.html");
+						window.location = "services.html";
 						document.getElementById("loading").style.display="none";
 					},
 					error: function(){
