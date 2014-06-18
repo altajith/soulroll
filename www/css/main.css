@@ -19,10 +19,8 @@ textarea {
 }
 
 .button2{
-	background-color: rgba(0, 0, 0, 0.9);
-	background: rgba(0, 0, 0, 0.9);
+	background: rgba(255, 153, 0, 0.9);
 	color: rgba(255, 255, 255, 1);
-
 	border:hidden 2px #000000;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -423,7 +421,7 @@ body{
     color: @textColor;
     font-family: @font-s;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 20px;
     border-bottom: 2px solid @themeColor !important;
 }
 
@@ -466,7 +464,7 @@ p{
 
 
 .title{
-    font-size: 20px;
+    font-size: 25px;
     font-family: @font-j;
     color: @themeColor;
     font-weight: 300;
@@ -476,7 +474,7 @@ p{
     padding: 0 1%;
     background: @themeColor;
     color: #fff;
-    font-size: 15px;
+    font-size: 20px;
     margin-top: 5px;
     &.left{
         margin-right: 5px;
@@ -531,7 +529,7 @@ h2{
 h3{
     color: @textColor;
     font-family: @font-s;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 300;
     text-shadow: none;
     margin-top: 35px;
@@ -631,7 +629,6 @@ h3{
 img.logo{
 	width:50%;
     height: auto;
-	
 }
 
 img.menuicon{
@@ -925,7 +922,7 @@ ul.general{
 .content{
     text-align: justify;
     font-family: @font-s;
-    font-size: 13px;
+    font-size: 18px;
 }
 
 
@@ -1028,8 +1025,8 @@ ul.general{
 }
 
 .orange-page{
-    background: url(../images/bg.png) #000 fixed;
-    color: #fff;
+	background: url(../images/bg.png) fixed;
+	color: #fff;
     h1, h2, h3{
         color: #fff;
         font-style:italic;
@@ -1635,25 +1632,46 @@ ul.general{
 
 /* Smartphones (landscape) ----------- */
 @media only screen 
-and (max-width : 640px) and (orientation: landscape) {
+and (min-width : 640px) and (orientation: landscape) {
 /* Styles */
+
 img.logo{
-	width:25%;
+	width:30%;
     height: auto;
-	
 }
 
 img.menuicon{
 	margin-bottom: 5%;
 	margin-left:40%;
 	width: 15%;
-	height: auto;
 }
 
 img.menuicon2{
 	margin-bottom: 5%;
 	width: 30%;
-	height: auto;
+}
+
+h3{
+    font-size: 50px;
+    &.mini{
+        font-size: 35px;
+    }
+}
+
+.content {
+  font-size: 28px;
+}
+
+.title {
+    font-size: 35px;
+}
+
+.highlight {
+    font-size: 30px;
+}
+
+.ui-page{
+    font-size: 25px;
 }
 
 }
