@@ -52,7 +52,6 @@
         <!--<script src="js/vendor/zepto.min.js"></script>-->
 
         <script src="js/jquery-1.8.2.min.js"></script>
-        <script src="js/jquery.mobile-1.2.0.min.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/jquery.flexslider-min.js"></script>
         <script src="js/photoswipe/klass.min.js"></script>
@@ -62,6 +61,7 @@
         
         <script src="js/forms.js"></script>
         <script src="js/main.js"></script>
+        
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
@@ -70,6 +70,7 @@
             s.parentNode.insertBefore(g,s)}(document,"script"));
         </script>
         
+<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
         
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
@@ -80,7 +81,6 @@
                 <div class="margpage">
                     <h1>Soul Roll 64'</h1>
                     
-                    		<input type="button" onClick="lol();" value="SET" class="buton" id="val"/>
                     <a href="#" onclick="setHref(7);" data-role="none" data-transition="slideup" class="top-button left">i</a>
                 </div>
             </div>
@@ -163,10 +163,11 @@
                 	}else if(id == 7){
                 		url="change-password.html";
                 	}
-                	
-       				window.location =url;
+    				alert();            	
+	       			$.mobile.navigate(url);
    				}
-                </script>
+   				
+   		          </script>
             </div>
             <div id="footer" data-role="footer">
                 <div class="padpage group">
