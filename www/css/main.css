@@ -629,6 +629,8 @@ h3{
 img.logo{
 	width:50%;
     height: auto;
+    margin-top: 5%;
+    margin-bottom: 10%;
 }
 
 img.menuicon{
@@ -1132,7 +1134,12 @@ ul.general{
 }
 
 #footer, .footer{
-    margin-bottom: 10px;
+    width:100%;
+	height:auto;
+	position:absolute;
+	bottom:0;
+	left:0;
+	background:rgba(0,0,0, 0.5);
 }
 
 
@@ -1501,10 +1508,6 @@ ul.general{
 
 
 
-
-
-
-
 /*************************************
 ***************** BLOG PAGE 
 **************************************/
@@ -1636,7 +1639,7 @@ and (min-width : 640px) and (orientation: landscape) {
 /* Styles */
 
 img.logo{
-	width:30%;
+	width:40%;
     height: auto;
 }
 
