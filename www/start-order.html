@@ -86,7 +86,7 @@
                 		<div class="circle"></div>
 						<div class="circle1"></div>
 					</div>
-                		<table>
+                		<table style="width: 100%">
                 				<tr>
                 					<td>Table No</td>
                 					<td id="table_names"> </td>
@@ -120,7 +120,7 @@
                 				
                 				<tr>
                 					<td> </td>
-                					<td > <input type="button" class="button2" id="submit" onclick="set_order();" value="Start the Order" style="background-color: #45484D;" /> </td>
+                					<td > <input type="button" class="button2" id="submit" onclick="set_order();" value="Start the Order" /> </td>
                 				</tr>
                 		</table>
                 		<br/>
@@ -148,7 +148,7 @@
 				jsonp: 'jsoncallback',
 				timeout: 50000000,
 				success: function(data, status){
-					var tables = '<select class="noOfItems" id="table_select" class="input theme-text">'
+					var tables = '<select style="width: 100%;" class="noOfItems" id="table_select" class="input theme-text">'
 								+'<option value="">Select Table</option>';
 					$.each(data, function(i,item){ 
 						tables = tables+ '<option value="'+item.tb_auto+'">'+item.table_name+'</option>';
