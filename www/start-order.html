@@ -52,6 +52,7 @@
         <!--<script src="js/vendor/zepto.min.js"></script>-->
 
         <script src="js/jquery-1.8.2.min.js"></script>
+        <script src="js/jquery.mobile-1.2.0.min.js"></script>
         <script src="js/helper.js"></script>
         <script src="js/jquery.flexslider-min.js"></script>
         <script src="js/photoswipe/klass.min.js"></script>
@@ -68,8 +69,7 @@
             g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
             s.parentNode.insertBefore(g,s)}(document,"script"));
         </script>
-    
-	<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>    
+        
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
         <!-- Add your site or application content here -->
@@ -86,7 +86,7 @@
                 		<div class="circle"></div>
 						<div class="circle1"></div>
 					</div>
-                		<table style="width: 100%">
+                		<table>
                 				<tr>
                 					<td>Table No</td>
                 					<td id="table_names"> </td>
@@ -120,7 +120,7 @@
                 				
                 				<tr>
                 					<td> </td>
-                					<td > <input type="button" class="button2" id="submit" onclick="set_order();" value="Start the Order" /> </td>
+                					<td > <input type="button" class="button2" id="submit" onclick="set_order();" value="Start the Order" style="background-color: #45484D;" /> </td>
                 				</tr>
                 		</table>
                 		<br/>
@@ -139,7 +139,7 @@
             var output_table = $('#table_names');
             var order_id = window.localStorage.getItem("order_id");
             if(order_id != null){
-            	$.mobile.navigate("gallery.html");
+            	window.location = "gallery.html";
             }
             
  			$.ajax({
@@ -148,7 +148,7 @@
 				jsonp: 'jsoncallback',
 				timeout: 50000000,
 				success: function(data, status){
-					var tables = '<select style="width: 100%;" class="noOfItems" id="table_select" class="input theme-text">'
+					var tables = '<select class="noOfItems" id="table_select" class="input theme-text">'
 								+'<option value="">Select Table</option>';
 					$.each(data, function(i,item){ 
 						tables = tables+ '<option value="'+item.tb_auto+'">'+item.table_name+'</option>';
@@ -185,7 +185,7 @@
 						window.localStorage.setItem("order_id", data.order_id);
 						window.localStorage.setItem("name", name);
 						window.localStorage.setItem("tel", tel);
-						$.mobile.navigate("gallery.html");
+						window.location = "gallery.html";
 						document.getElementById("loading").style.display="none";
 					},
 					error: function(){

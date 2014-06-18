@@ -78,8 +78,8 @@
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
                     <h1>Soul Roll 64'</h1>
-                    <a href="index.html" class="menu-button left"><</a>
-                    <a href="index.html" class="menu-button right"><img src="images/fork-spoon-knife.png" /></a>
+                    <a href="index.html" data-transition="flip" class="menu-button left"><</a>
+                    <a href="index.html" data-transition="flip" class="menu-button right"><img src="images/fork-spoon-knife.png" /></a>
                 </div>
             </div>
             <div class="ui-body margpage">
@@ -131,7 +131,7 @@
 		success: function(data, status){
 			$.each(data, function(i,item){ 
 				var menu = '<li>'
-                            +'<a onclick="setHref('+item.item_id+');" class="album-photo"  style="height:200px !important;">'
+                            +'<a onclick="setHref('+item.item_id+');"  class="album-photo"  style="height:200px !important;">'
                                +' <span class="counter">'+(i+1)+'</span>'
                                +' <img src="'+item.item_image_path+'" style="height:100% !important;" />'
                           + '</a>'
