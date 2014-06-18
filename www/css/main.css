@@ -413,7 +413,7 @@ body{
 }
 
 .ui-body{
-    padding: 0;
+    padding: 0 0 10% 0;
 }
 .ui-page{
     background: url(../images/tile.png) repeat @bodyBgColor;
@@ -629,8 +629,6 @@ h3{
 img.logo{
 	width:50%;
     height: auto;
-    margin-top: 5%;
-    margin-bottom: 10%;
 }
 
 img.menuicon{
@@ -1027,7 +1025,8 @@ ul.general{
 }
 
 .orange-page{
-	background: url(../images/bg.png) fixed;
+	background-color: gray;
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
 	color: #fff;
     h1, h2, h3{
         color: #fff;
@@ -1135,7 +1134,6 @@ ul.general{
 
 #footer, .footer{
     width:100%;
-	height:auto;
 	position:absolute;
 	bottom:0;
 	left:0;
@@ -1160,7 +1158,8 @@ ul.general{
 }
 
 #home-page{
-    background: url(../images/bg.png) #000 no-repeat;
+    background-color: gray;
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
     /*background: url(http://lorempixel.com/1024/576/) #000 no-repeat;*/
     background-size: auto 100%;
     color: #fff;
