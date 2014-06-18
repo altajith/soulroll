@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
         <!-- Cleartype for Windows Phone - uncomment below 1 line to apply-->
         <!--<meta http-equiv="cleartype" content="on">-->
-
+		<link rel="stylesheet" href="css/circle.css" />
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch/apple-touch-icon-144x144-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch/apple-touch-icon-114x114-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72-precomposed.png" />
@@ -84,7 +84,10 @@
             <div class="ui-body margpage">
                 <div class="gallery-items" data-columns="1">
                     <div class="title loading"> Loading Food Item...</div>
-                    
+                     <div id="loading">
+                		<div class="circle"></div>
+						<div class="circle1"></div>
+					</div>
                     <div class="container hide group">
                         <div id="menu_item"> </div>
                         
@@ -188,6 +191,7 @@
 	
 	
     function package_add_to_order(pack_id){
+    	document.getElementById("loading").style.display="block";
     	$.ajax({
 			type: 'GET',
 			url: 'http://www.councilofcoders.com/phonegap/add_to_package_cart.php',
@@ -197,12 +201,14 @@
 			timeout: 5000,
 			success: function(data, status){
  				if(data.res == "1"){
-					alert("Added to the cart");
+					alert("Added to the order.");
 					document.getElementById('add_to_cart_button' + pack_id).onclick=function(){ package_remove_from_order(pack_id); };
 					document.getElementById('add_to_cart_button' + pack_id).innerHTML="Remove";
 					document.getElementById('add_to_cart_button' + pack_id).style.backgroundColor="red";
 					validate_count++;
 				}
+				
+				document.getElementById("loading").style.display="none";
 			
 			},
 			error: function(){
@@ -212,6 +218,7 @@
    	} 
    	
    	function package_remove_from_order(pack_id){
+   		document.getElementById("loading").style.display="block";
     	$.ajax({
 			type: 'GET',
 			url: 'http://www.councilofcoders.com/phonegap/remove_from_package_cart.php',
@@ -221,13 +228,14 @@
 			timeout: 5000,
 			success: function(data, status){
  				if(data.res == "1"){
-					alert("Removed from the cart");
+					alert("Removed from the order.");
 					document.getElementById('add_to_cart_button' + pack_id).onclick=function(){ package_add_to_order(pack_id); };
 					document.getElementById('add_to_cart_button' + pack_id).innerHTML="Add to order";
 					document.getElementById('add_to_cart_button' + pack_id).style.backgroundColor="";
 					validate_count++;
 				}
-			
+				
+				document.getElementById("loading").style.display="none";
 			},
 			error: function(){
 				output.text('There was an error loading the data.');
@@ -241,7 +249,6 @@
 	}
 	
 	function get_menu_items_per_package(pass_pack_id){
-		
 		var pack_id = pass_pack_id;
 		$.ajax({
 		type: 'GET',

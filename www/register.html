@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
         <!-- Cleartype for Windows Phone - uncomment below 1 line to apply-->
         <!--<meta http-equiv="cleartype" content="on">-->
-
+		<link rel="stylesheet" href="css/circle.css" />
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch/apple-touch-icon-144x144-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch/apple-touch-icon-114x114-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72-precomposed.png" />
@@ -69,7 +69,6 @@
             g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
             s.parentNode.insertBefore(g,s)}(document,"script"));
         </script>
-        
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
     <body class="my-body">
         <!-- Add your site or application content here -->
@@ -84,6 +83,10 @@
                 <input type="email" class="input theme-text" id="username" name="username" placeholder="Email" />
                 <input type="password" class="input theme-text" id="password" name="password" placeholder="Password"/>
                 <input type="button" class="button2" id="submit" value="Sign Up" onclick="register();" />
+                 <div id="loading">
+                	<div class="circle"></div>
+					<div class="circle1"></div>
+				</div>
                  <label class="middle" id="error" style="color:red;"> </label><br/>
                 <label class="middle"><a href="#" onclick="setHref(1);"><b>Are you an already registered user?</b></a></label>
             </div>
@@ -147,6 +150,7 @@
             	if(validate()){
 					var username = document.getElementById("username").value;
 					var password = document.getElementById("password").value;
+					document.getElementById("loading").style.display="block";
 					$.ajax({
 						type: 'GET',
 						url: 'http://www.councilofcoders.com/phonegap/register.php',
@@ -161,6 +165,7 @@
 							}else{
 								document.getElementById("error").innerHTML="You are already registered.";
 							}
+							document.getElementById("loading").style.display="none";
 						},
 						error: function(){
 							output.text('There was an error loading the data.');

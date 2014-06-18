@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
         <!-- Cleartype for Windows Phone - uncomment below 1 line to apply-->
         <!--<meta http-equiv="cleartype" content="on">-->
-
+		<link rel="stylesheet" href="css/circle.css" />
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch/apple-touch-icon-144x144-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch/apple-touch-icon-114x114-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72-precomposed.png" />
@@ -196,7 +196,6 @@
 		success: function(data, status){
 			if(data.res == "1")
 			{
-				
 				document.getElementById('noItems' + uitem_id).value=data.noOfItems;
 			}
 		},
@@ -209,6 +208,7 @@
 	function confirm_order(){
 	var user_id = window.localStorage.getItem("user_id");
     var order_id = window.localStorage.getItem("order_id");
+    document.getElementById("loading").style.display="block";
 	$.ajax({
 		type: 'GET',
 		url: 'http://www.councilofcoders.com/phonegap/confirm_order.php',
@@ -229,6 +229,7 @@
 			{
 				alert("Error is occurred.");
 			}
+			document.getElementById("loading").style.display="none";
 		},
 		error: function(){
 			output.text('There was an error loading the data.');
@@ -244,6 +245,10 @@
 
                     </div>
                     <div class="slogan right">
+                    	<div id="loading">
+                			<div class="circle"></div>
+							<div class="circle1"></div>
+						</div>
                         <span id="final_amount"> </span>
                         <input type="button" onclick="confirm_order();" style="background-color: #45484D; " value="Confirm" />
                     </div>

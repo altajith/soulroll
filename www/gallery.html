@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
         <!-- Cleartype for Windows Phone - uncomment below 1 line to apply-->
         <!--<meta http-equiv="cleartype" content="on">-->
-
+		<link rel="stylesheet" href="css/circle.css" />
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch/apple-touch-icon-144x144-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch/apple-touch-icon-114x114-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72-precomposed.png" />
@@ -86,6 +86,10 @@
                 
                 <div class="gallery">
                 	<h4 id="table_no"> </h4>
+                	<div id="loading">
+                		<div class="circle"></div>
+						<div class="circle1"></div>
+					</div>
                     <ul id="menu_items">
                     </ul>
                 </div>
@@ -175,6 +179,7 @@
 	var pass_id=uitem_id;
 	var user_id = window.localStorage.getItem("user_id");
 	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
+	document.getElementById("loading").style.display="block";
 	$.ajax({
 		type: 'GET',
 		url: 'http://www.councilofcoders.com/phonegap/add_to_cart.php',
@@ -185,7 +190,8 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Added to the cart");
+					alert("Added to the order.");
+					document.getElementById("loading").style.display="none";
 					validate_count++;
 				}
 		},
@@ -198,6 +204,7 @@
 	function remove_item(uitem_id){
 	var pass_id=uitem_id;
 	var user_id = window.localStorage.getItem("user_id");
+	document.getElementById("loading").style.display="block";
 	$.ajax({
 		type: 'GET',
 		url: 'http://www.councilofcoders.com/phonegap/remove_from_cart.php',
@@ -208,7 +215,8 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Removed from the cart");
+					alert("Removed from the order.");
+					document.getElementById("loading").style.display="none";
 					validate_count--;
 				}
 		},
@@ -252,6 +260,7 @@ function update_cart(uitem_id){
 	var place_order = window.localStorage.getItem("place_order");
 	if(place_order != "true")
 	{
+	document.getElementById("loading").style.display="block";
 	var pass_id=uitem_id;
 	if(document.getElementById('chkbut' + pass_id).checked == true){
 	var user_id = window.localStorage.getItem("user_id");
@@ -266,7 +275,8 @@ function update_cart(uitem_id){
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Update the cart;");
+					alert("Update the order.");
+					document.getElementById("loading").style.display="none";
 				}
 		},
 		error: function(){
@@ -285,6 +295,7 @@ function update_cart(uitem_id){
 	function place_order_func(){
 		var place_order = window.localStorage.getItem("place_order");
 		var user_id = window.localStorage.getItem("user_id");
+		document.getElementById("loading").style.display="block";
 		if(window.validate_count != 0){
 			if(place_order == "true")
 			{
@@ -304,6 +315,7 @@ function update_cart(uitem_id){
 					timeout: 50000000,
 					success: function(data, status){
 						window.location = "services.html";
+						document.getElementById("loading").style.display="none";
 					},
 					error: function(){
 						output.text('There was an error loading the data.');
@@ -328,6 +340,7 @@ function update_cart(uitem_id){
 
                     </div> 
                     <div class="slogan right">
+                    	
                     	<input type="button" id="place_button" onclick="place_order_func();" style="background-color: #45484D;"  />
                     </div>
             <script>

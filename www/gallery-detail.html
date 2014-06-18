@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
         <!-- Cleartype for Windows Phone - uncomment below 1 line to apply-->
         <!--<meta http-equiv="cleartype" content="on">-->
-
+		<link rel="stylesheet" href="css/circle.css" />
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch/apple-touch-icon-144x144-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch/apple-touch-icon-114x114-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72-precomposed.png" />
@@ -84,7 +84,10 @@
             <div class="ui-body margpage">
                 <div class="gallery-items" data-columns="1">
                     <div class="title loading"> Loading Food Item...</div>
-                    
+                    <div id="loading">
+                		<div class="circle"></div>
+						<div class="circle1"></div>
+					</div>
                     <div class="container hide group">
                         <div id="menu_item"> </div>
                         
@@ -189,6 +192,7 @@
 	var pass_id=uitem_id;
 	var user_id = window.localStorage.getItem("user_id");
 	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
+	document.getElementById("loading").style.display="block";
 	$.ajax({
 		type: 'GET',
 		url: 'http://www.councilofcoders.com/phonegap/add_to_cart.php',
@@ -199,7 +203,8 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Added to the cart;");
+					alert("Added to the order.");
+					document.getElementById("loading").style.display="none";
 				}
 		},
 		error: function(){
@@ -211,6 +216,7 @@
 	function remove_item(uitem_id){
 	var pass_id=uitem_id;
 	var user_id = window.localStorage.getItem("user_id");
+	document.getElementById("loading").style.display="block";
 	$.ajax({
 		type: 'GET',
 		url: 'http://www.councilofcoders.com/phonegap/remove_from_cart.php',
@@ -221,7 +227,8 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Removed from the cart;");
+					alert("Removed from the order.");
+					document.getElementById("loading").style.display="none";
 				}
 		},
 		error: function(){
@@ -262,6 +269,7 @@
 	function update_cart(uitem_id){
 	var pass_id=uitem_id;
 	if(document.getElementById('chkbut' + pass_id).checked == true){
+	document.getElementById("loading").style.display="block";
 	var user_id = window.localStorage.getItem("user_id");
 	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
 	$.ajax({
@@ -274,7 +282,8 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Update the cart;");
+					alert("Update the order.");
+					document.getElementById("loading").style.display="none";
 				}
 		},
 		error: function(){
@@ -291,6 +300,7 @@
 	function place_order_func(){
 		var place_order = window.localStorage.getItem("place_order");
 		if(window.validate_count != 0){
+			document.getElementById("loading").style.display="block";
 			if(place_order == "true")
 			{
 				document.getElementById("place_button").value="Order is placed.";
@@ -305,6 +315,7 @@
 				document.getElementById("place_button").type="button";
 				window.location = "service.html";
 			}
+			document.getElementById("loading").style.display="none";
 		}
 		else
 		{
