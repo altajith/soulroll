@@ -85,7 +85,7 @@
             var order_id = window.localStorage.getItem("order_id");
             if(order_id == null || order_id == ""){
   				//window.location = "start-order.html";
-  				$.mobile.changePage( "login.html", {
+  				$.mobile.changePage( "start-order.html", {
   					transition: "flip",
   					role:"none",
   					reverse: false,
@@ -355,13 +355,7 @@
 	}
 	
 	function confirm_order(){
-		//window.location ="services.html";
-		$.mobile.changePage( "services.html", {
-  			transition: "slideup",
-  			role:"none",
-  			reverse: false,
-  			changeHash: true
-		});
+		window.location.reload();
 	}
 	
 	function place_order_func(){
