@@ -19,7 +19,7 @@ textarea {
 }
 
 .button2{
-	background: rgba(255, 153, 0, 0.9);
+	background: #3b5998;
 	color: rgba(255, 255, 255, 1);
 	border:hidden 2px #000000;
 	-moz-border-radius: 5px;
@@ -397,8 +397,9 @@ ul.child-right-important{
 @blue: #2891bd;
 @yellow: #ffc40d;
 @red:#c7432b;
+@new: #3b5998;
 
-@themeColor: @orange;
+@themeColor: @new;
 @bodyBgColor: #fff;
 
 @textColor: #000;
@@ -627,8 +628,9 @@ h3{
 }
 
 img.logo{
-	width:50%;
+	width:80%;
     height: auto;
+    margin-bottom: 10%;
 }
 
 img.menuicon{
@@ -1025,8 +1027,7 @@ ul.general{
 }
 
 .orange-page{
-	background-color: gray;
-	background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+	background-color: rgb(0, 172, 237);
 	color: #fff;
     h1, h2, h3{
         color: #fff;
