@@ -75,7 +75,13 @@
     	var user_id = window.localStorage.getItem("user_id");
     	
    		if(user_id != null){
-    		window.location.href="index.html";
+    		//window.location.href="index.html";
+    			$.mobile.changePage( "index.html", {
+  					transition: "slideup",
+  					role:"none",
+  					reverse: false,
+  					changeHash: true
+				});
 		}
     	</script>
         <!-- Add your site or application content here -->
