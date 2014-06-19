@@ -83,25 +83,11 @@
             </div>
            <script>
             var order_id = window.localStorage.getItem("order_id");
+            var place_order = window.localStorage.getItem("place_order");
             if(order_id == null || order_id == ""){
-  				//window.location = "start-order.html";
-  				$.mobile.changePage( "start-order.html", {
-  					transition: "slideup",
-  					role:"none",
-  					reverse: true,
-  					changeHash: true
-				});
-   			}
-   			
-   			var place_order = window.localStorage.getItem("place_order");
-   			if(window.place_order != "true")
-			{
-				$.mobile.changePage( "service.html", {
-  					transition: "slideup",
-  					role:"none",
-  					reverse: true,
-  					changeHash: true
-				});
+  				window.location = "start-order.html";
+   			}else if(window.place_order != "true"){
+				window.location = "services.html";
 			}
            </script>
              <div class="ui-body margpage">
