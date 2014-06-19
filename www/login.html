@@ -96,8 +96,8 @@
 					<div class="circle1"></div>
 				</div>
                 <label class="middle" id="error" style="color:red;"> </label><br/>
-                 <label class="middle"><a href="register.html" data-role="none" data-transition="slideup"  style="color:red;">Forgot you password?</a></label><br/>
-                <label class="middle"><a href="javascript:loadPage('register.html');" data-role="button" data-theme="a"><b>Sign Up Here</b></a></label>
+                 <label class="middle"><a href="reset-password.html" data-role="none" data-transition="slideup"  style="color:red;">Forgot you password?</a></label><br/>
+                <label class="middle"><a href="register.html" data-role="none" data-transition="slideup"  ><b>Sign Up Here</b></a></label>
             </div>
             <div id="footer" data-role="footer">
                 <div class="padpage group">
@@ -110,17 +110,7 @@
             </div>
          
             <script>
-            function setHref(id){
-                var url="";
-                if(id == 1){
-                	url="register.html";
-                }else if(id == 2){
-                	url="reset-password.html";
-                }
-                
-       			window.location =url;
-       			
-   			}
+       
    			
             function validate(){
             	var username = document.getElementById("username");
