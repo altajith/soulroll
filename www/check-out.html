@@ -78,13 +78,19 @@
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
                     <h1>Check Out</h1>
-                    <a href="index.html" data-transition="flip" class="menu-button left"><</a>
+                    <a href="index.html" data-role="none" data-transition="flip" class="menu-button left"><</a>
                 </div>
             </div>
            <script>
             var order_id = window.localStorage.getItem("order_id");
             if(order_id == null || order_id == ""){
-  				window.location = "start-order.html";
+  				//window.location = "start-order.html";
+  				$.mobile.changePage( "start-order.html", {
+  					transition: "slideup",
+  					role:"none",
+  					reverse: false,
+  					changeHash: true
+				});
    			}
            </script>
              <div class="ui-body margpage">
@@ -139,7 +145,7 @@
 				total_amount = parseInt(total_amount) + (parseInt(item.price)*noOfItems);
 				
 				var menu = '<li>'
-                            +'<a onclick="setHref('+item.item_id+');" class="album-photo"  style="height:200px !important;">'
+                            +'<a href="view-food-item.html?item_id='+item.item_id+'" data-role="none" data-transition="flip" class="album-photo"  style="height:200px !important;">'
                                +' <span class="counter">'+noOfItems+'</span>'
                                +' <img src="'+item.item_image_path+'" style="height:100% !important;" />'
                           + '</a>'
@@ -173,7 +179,7 @@
 				total_amount = parseInt(total_amount) + (parseInt(item.price));
 				
 				var menu = '<li>'
-                            +'<a onclick="setHref_Pck('+item.pack_id+');" class="album-photo"  style="height:200px !important;">'
+                            +'<a onclick="view-package-item.html?pack_id='+item.pack_id+'" data-role="none" data-transition="flip" class="album-photo"  style="height:200px !important;">'
                                +' <span class="counter">'+(i+1)+'</span>'
                                +' <img src="'+item.pack_image_path+'" style="height:100% !important;" alt="Album 1" />'
                           + '</a>'
