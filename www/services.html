@@ -78,13 +78,19 @@
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
                     <h1>My Order</h1>
-                    <a href="index.html" class="menu-button left"><</a>
+                    <a href="index.html" data-role="none" data-transition="flip" class="menu-button left"><</a>
                 </div>
             </div>
            <script>
             var order_id = window.localStorage.getItem("order_id");
             if(order_id == null || order_id == ""){
-  				window.location = "start-order.html";
+  				//window.location = "start-order.html";
+  				$.mobile.changePage( "login.html", {
+  					transition: "flip",
+  					role:"none",
+  					reverse: false,
+  					changeHash: true
+				});
    			}
            </script>
              <div class="ui-body margpage">
@@ -363,7 +369,13 @@
 			{
 				window.localStorage.setItem("place_order", "true");
 				cart_to_kichen();
-				window.location = "services.html";
+				//window.location = "services.html";
+				$.mobile.changePage( "services.html", {
+  					transition: "flip",
+  					role:"none",
+  					reverse: false,
+  					changeHash: true
+				});
 			}
 		}
 		else

@@ -89,7 +89,7 @@
 					<div class="circle1"></div>
 				</div>
                  <label class="middle" id="error" style="color:red;"> </label><br/>
-                <label class="middle"><a href="#" onclick="setHref(1);"><b>Are you an already registered user?</b></a></label>
+                <label class="middle"><a href="login.html" data-role="none" data-transition="slideup" ><b>Are you an already registered user?</b></a></label>
             </div>
             <div id="footer" data-role="footer">
                 <div class="padpage group">
@@ -109,9 +109,6 @@
                 	
        			window.location =url;
    			}
-   			$( document ).ready(function() {
-   				
-			});
 			
             function validate(){
             	
@@ -170,6 +167,12 @@
 							if(data.val == '0'){
 								window.localStorage.setItem("user_id", data.user_id);
 								window.location.href="login.html";
+								$.mobile.changePage( "services.html", {
+  							transition: "flip",
+  							role:"none",
+  							reverse: false,
+  							changeHash: true
+						});
 							}else{
 								document.getElementById("error").innerHTML="You are already registered.";
 							}

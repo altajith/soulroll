@@ -78,7 +78,7 @@
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
                     <h1>Packages</h1>
-                    <a href="index.html" class="menu-button left"><</a>
+                    <a href="index.html" data-role="none" data-transition="flip" class="menu-button left"><</a>
                 </div>
             </div>
             <div class="ui-body margpage">
@@ -105,7 +105,13 @@
  	var order_id = window.localStorage.getItem("order_id");
  	
     if(order_id == null || order_id == ""){
-  		window.location = "start-order.html";
+  		//window.location = "start-order.html";
+  		$.mobile.changePage( "start-order.html", {
+  			transition: "flip",
+  			role:"none",
+  			reverse: false,
+  			changeHash: true
+		});
     }
     
     var output = $('#pack_items');
@@ -264,7 +270,13 @@
 	
 	
 	function confirm_order(){
-		window.location ="services.html";
+		//window.location ="services.html";
+		$.mobile.changePage( "services.html", {
+  			transition: "flip",
+  			role:"none",
+  			reverse: false,
+  			changeHash: true
+		});
 	}
 	
 			
@@ -289,7 +301,13 @@
 					jsonp: 'jsoncallback',
 					timeout: 50000000,
 					success: function(data, status){
-						window.location = "services.html";
+						//window.location = "services.html";
+						$.mobile.changePage( "services.html", {
+  							transition: "flip",
+  							role:"none",
+  							reverse: false,
+  							changeHash: true
+						});
 						document.getElementById("loading").style.display="none";
 					},
 					error: function(){
