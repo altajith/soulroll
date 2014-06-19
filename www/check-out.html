@@ -86,8 +86,14 @@
             var place_order = window.localStorage.getItem("place_order");
             if(order_id == null || order_id == ""){
   				window.location = "start-order.html";
-   			}else if(window.place_order != "true"){
+   			}else if(place_order != "true"){
 				window.location = "services.html";
+			}else{
+				var check_out=window.localStorage.getItem("check-out");
+				if(check_out != '1'){
+					window.localStorage.setItem("check-out","1");
+					window.location.reload();
+				}
 			}
            </script>
              <div class="ui-body margpage">
@@ -116,7 +122,7 @@
             </div>
             
           <script type="text/javascript">
-            
+       
     function setHref(val_id){
     	window.location = "view-food-item.html?item_id="+val_id;
     }
@@ -125,7 +131,7 @@
     	window.location = "view-package-item.html?pack_id="+val_id;
     }
             
-	//Load the menu list
+	//Load the menu list=
 	var output = $('#selected_menu_items');
 	var user_id = window.localStorage.getItem("user_id");
 	var total_amount=0;
