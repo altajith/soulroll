@@ -76,9 +76,9 @@
         <div id="gallery-detail-page" class="page" data-theme="a" data-role="page">
             <div id="header" data-role="header">
                 <div class="margpage">
-                    <a href="index.html" class="menu-button "></a>
+                    <a href="index.html" data-role="none" data-transition="flip" class="menu-button "></a>
                     <h1>View Package</h1>                    
-                    <a href="check-out.html" class="menu-button left"><</a>
+                    <a href="check-out.html" data-role="none" data-transition="flip" class="menu-button left"><</a>
                                     </div>
             </div>
             <div class="ui-body margpage">
@@ -136,7 +136,7 @@
 			$.each(data, function(i,item){ 
 				var menu = '<h4>'+item.pack_name+'</h4>'
 						+'<a class="item image" data-ajax="false">'
-                                       + '<img src="'+item.pack_image_path+'" alt="Photo 1" />'
+                                       + '<img style="width:100%; height:auto;" src="'+item.pack_image_path+'" alt="Photo 1" />'
                                    + '</a>'
                                    +'<p><br/>Price : $'+item.price+'<br/>'
                                    +'Available for : '+item.available_meal+'</br>'

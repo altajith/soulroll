@@ -76,9 +76,9 @@
         <div id="gallery-detail-page" class="page orange-page" data-theme="a" data-role="page">
             <div id="header" data-role="header">
                 <div class="margpage">
-                    <a href="index.html" data-transition="flip"  class="menu-button right"><img src="images/fork-spoon-knife.png" /></a>
+                    <a href="index.html" data-role="none" data-transition="flip"  class="menu-button right"><img src="images/fork-spoon-knife.png" /></a>
                     <h1>Food Item</h1>                    
-                    <a href="gallery.html" data-transition="flip" class="menu-button left"><</a>
+                    <a href="gallery.html" data-role="none" data-transition="flip" class="menu-button left"><</a>
                                     </div>
             </div>
             <div class="ui-body margpage">
@@ -294,7 +294,13 @@
 	}
     	
     function confirm_order(){
-		window.location ="services.html";
+		//window.location ="services.html";
+		$.mobile.changePage( "services.html", {
+  			transition: "slideup",
+  			role:"none",
+  			reverse: false,
+  			changeHash: true
+		});
 	}
 	
 	function place_order_func(){

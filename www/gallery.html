@@ -78,8 +78,8 @@
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
                     <h1>Soul Roll 64'</h1>
-                    <a href="index.html" data-transition="flip" class="menu-button left"><</a>
-                    <a href="index.html" data-transition="flip" class="menu-button right"><img src="images/fork-spoon-knife.png" /></a>
+                    <a href="index.html" data-role="none" data-transition="flip" class="menu-button left"><</a>
+                    <a href="index.html" data-role="none" data-transition="flip" class="menu-button right"><img src="images/fork-spoon-knife.png" /></a>
                 </div>
             </div>
             <div class="ui-body margpage">
@@ -109,7 +109,13 @@
     var order_id = window.localStorage.getItem("order_id");
     var table_no = window.localStorage.getItem("table_no");
     if(order_id == null || order_id == ""){
-  		window.location = "start-order.html";
+  		//window.location = "start-order.html";
+  		$.mobile.changePage( "start-order.html", {
+  			transition: "flip",
+  			role:"none",
+  			reverse: false,
+  			changeHash: true
+		});
     }
          
     function setHref(val_id){
@@ -295,7 +301,13 @@ function update_cart(uitem_id){
 }
 	
 	function confirm_order(){
-		window.location ="services.html";
+		//window.location ="services.html";
+		$.mobile.changePage( "services.html", {
+  			transition: "slideup",
+  			role:"none",
+  			reverse: false,
+  			changeHash: true
+		});
 	}
 	
 			
@@ -321,7 +333,13 @@ function update_cart(uitem_id){
 					jsonp: 'jsoncallback',
 					timeout: 50000000,
 					success: function(data, status){
-						window.location = "services.html";
+						//window.location = "services.html";
+						$.mobile.changePage( "services.html", {
+  							transition: "flip",
+  							role:"none",
+  							reverse: false,
+  							changeHash: true
+						});
 						document.getElementById("loading").style.display="none";
 					},
 					error: function(){

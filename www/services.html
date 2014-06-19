@@ -78,13 +78,19 @@
                 <div class="margpage">
                     <!--<h2>Water</h2>-->
                     <h1>My Order</h1>
-                    <a href="index.html" class="menu-button left"><</a>
+                    <a href="index.html" data-role="none" data-transition="flip" class="menu-button left"><</a>
                 </div>
             </div>
            <script>
             var order_id = window.localStorage.getItem("order_id");
             if(order_id == null || order_id == ""){
-  				window.location = "start-order.html";
+  				//window.location = "start-order.html";
+  				$.mobile.changePage( "login.html", {
+  					transition: "flip",
+  					role:"none",
+  					reverse: false,
+  					changeHash: true
+				});
    			}
            </script>
              <div class="ui-body margpage">
@@ -164,7 +170,7 @@
                         	 menu=menu + '<label>No Of Items : '+noOfItems+'</label>';
                         }
                          menu=menu +'</span>'
-                        +'</li>';
+                        +'</li><br/>';
 				output.append(menu);
 				check_item_available_in_cart(item.item_id);
 			
@@ -200,12 +206,12 @@
                            + '</a>';
                         if(window.place_order != "true")
 						{
-                           menu=menu + '<span class="right"><a onClick="remove_package('+item.pack_id+');" class="button2" id="chkbut_p'+item.pack_id+'" style="cursor:pointer; margin-top:-23px; margin-right:10px; color:red;">Remove</a>';
+                           menu=menu + '<span class="right"><a onClick="remove_package('+item.pack_id+');" class="button2" id="chkbut_p'+item.pack_id+'" style="cursor:pointer; font-size:70%; margin-top:-23px; margin-right:10px; color:red;">Remove</a>';
                          			
                         }
                         
                         menu=menu +'</span>'
-                        +'</li>';
+                        +'</li><br/>';
 				output_selected_package.append(menu);
 			
 			});
@@ -349,7 +355,13 @@
 	}
 	
 	function confirm_order(){
-		window.location ="services.html";
+		//window.location ="services.html";
+		$.mobile.changePage( "services.html", {
+  			transition: "slideup",
+  			role:"none",
+  			reverse: false,
+  			changeHash: true
+		});
 	}
 	
 	function place_order_func(){
@@ -363,7 +375,13 @@
 			{
 				window.localStorage.setItem("place_order", "true");
 				cart_to_kichen();
-				window.location = "services.html";
+				//window.location = "services.html";
+				$.mobile.changePage( "services.html", {
+  					transition: "flip",
+  					role:"none",
+  					reverse: false,
+  					changeHash: true
+				});
 			}
 		}
 		else
