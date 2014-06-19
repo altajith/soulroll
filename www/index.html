@@ -89,7 +89,13 @@
             var user_id = window.localStorage.getItem("user_id");
     	
    			if(user_id == null || user_id == ""){
-    			window.location.href="login.html";
+    			//window.location.href="login.html";
+    			$.mobile.changePage( "login.html", {
+  					transition: "slideup",
+  					role:"none",
+  					reverse: false,
+  					changeHash: true
+				});
 			}
             </script>
             <div class="ui-body padpage">
@@ -97,44 +103,45 @@
                 <div class="menu">
                     <ul class="child-left">
                      
-                        <li>
+                        <li >
                             <a href="gallery.html"  data-role="none"  data-transition="slidefade" class="menu-item">
-                                <img src="images/home-icons/icon-gallery.png" alt="Gallery" />
+                                <img src="images/home-icons/icon-gallery.png" alt="Menu" />
                                 <span>Menu</span>
                             </a>
                         </li>
                         
-                        <li>
+                        <li >
                             <a href="packages.html"  data-role="none"  data-transition="slidefade"  class="menu-item">
-                                <img src="images/home-icons/icon-careers.png" alt="Join Us" />
+                                <img src="images/home-icons/icon-careers.png" alt="Packages" />
                                 <span>Packages</span>
                             </a>
                         </li>
                         
-                        <li>
+                        <li >
                             <a href="services.html"  data-role="none"  data-transition="slidefade"  class="menu-item">
-                                <img src="images/home-icons/icon-blog.png" alt="Blog" />
+                                <img src="images/home-icons/icon-blog.png" alt="My Order" />
                                 <span>My Order</span>
                             </a>
                         </li>
                         
-                        <li>
+                   
+                        <li >
                             <a href="check-out.html"  data-role="none"  data-transition="slidefade"  class="menu-item">
-                                <img src="images/home-icons/icon-products.png" alt="Services" />
+                                <img src="images/home-icons/icon-products.png" alt="Check Out" />
                                 <span>Check Out</span>
                             </a>
                         </li>
                         
-                        <li>
+                        <li >
                             <a href="login.html" onclick="signOut();" data-role="none" data-transition="flip"  class="menu-item">
-                                <img src="images/home-icons/icon-products.png" alt="Services" />
+                                <img src="images/home-icons/icon-products.png" alt="Sign Out" />
                                 <span>Sign Out</span>
                             </a>
                         </li>
                         
-                        <li>
+                        <li >
                             <a href="about.html"  data-role="none"  data-transition="slidefade"  class="menu-item">
-                                <img src="images/home-icons/icon-about.png" alt="Services" />
+                                <img src="images/home-icons/icon-about.png" alt="About Us" />
                                 <span>About Us</span>
                             </a>
                         </li>
