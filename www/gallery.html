@@ -328,13 +328,8 @@ function update_cart(uitem_id){
 					jsonp: 'jsoncallback',
 					timeout: 50000000,
 					success: function(data, status){
-						//window.location = "services.html";
-						$.mobile.changePage( "services.html", {
-  							transition: "flip",
-  							role:"none",
-  							reverse: false,
-  							changeHash: true
-						});
+						window.location = "services.html";
+						
 						document.getElementById("loading").style.display="none";
 					},
 					error: function(){
