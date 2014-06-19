@@ -113,7 +113,7 @@
   			changeHash: true
 		});
     }
-    
+    var place_order = window.localStorage.getItem("place_order");
     var output = $('#pack_items');
 	$.ajax({
 		url: 'http://www.councilofcoders.com/phonegap/get_packages.php',
@@ -141,9 +141,12 @@
                                + '<div id="items_out'+item.pack_id+'"><span><b>Items</b></span><br/> </div>'
                                +'</div>'
                                + '<div class="group foot"> '
-                               +'<a class="left highlight">$'+item.price+'</a>'
-                               + '<a target="_blank" class="right highlight" id="add_to_cart_button'+item.pack_id+'" onclick="package_add_to_order('+item.pack_id+');" >Add to order</a>' 
-                               + '<a target="_blank" class="left highlight"> '+item.available_meal+'</a>'      
+                               +'<a class="left highlight">$'+item.price+'</a>';
+                       if(window.place_order != "true")
+						{         
+                             menu = menu + '<a target="_blank" class="right highlight" id="add_to_cart_button'+item.pack_id+'" onclick="package_add_to_order('+item.pack_id+');" >Add to order</a>';
+                        }
+                         menu = menu  + '<a target="_blank" class="left highlight"> '+item.available_meal+'</a>'      
                                + '</div> </div>'
                           +' </li>';
 						
