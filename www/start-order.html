@@ -133,10 +133,6 @@
             var local_name=window.localStorage.getItem("name");
             var local_tel=window.localStorage.getItem("tel");
             
-            window.onload=function(){
-            	document.getElementById("name").value=window.local_name;
-            	document.getElementById("tel").value=window.local_tel;
-            };
               
             var output_table = $('#table_names');
             var order_id = window.localStorage.getItem("order_id");
@@ -148,6 +144,10 @@
   					reverse: false,
   					changeHash: true
 				});
+            }
+            else{
+            	document.getElementById("name").value=window.local_name;
+            	document.getElementById("tel").value=window.local_tel;
             }
             
  			$.ajax({
