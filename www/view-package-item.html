@@ -127,7 +127,7 @@
 	var upack_id = getUrlVars()["pack_id"];
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/get_selected_package.php',
+		url: 'http://api-soulroll.friendlinet.com/get_selected_package.php',
 		data: { pack_id: upack_id }, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -160,7 +160,7 @@
 		var pack_id = pass_pack_id;
 		$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/get_menu_items_per_pack.php',
+		url: 'http://api-soulroll.friendlinet.com/get_menu_items_per_pack.php',
 		data: {pack_id: pack_id}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -172,7 +172,7 @@
 			$.each(data, function(i,item){
 				var item_html='<a href="#" onclick="setHref_Item('+item.item_id+');" ><span>'+(i+1)+' : '+item.item_name+'</span></a><br/>';
 	
-				items_out.append(item_html);       
+				items_out.append(item_html);
 			});
 			
 		},

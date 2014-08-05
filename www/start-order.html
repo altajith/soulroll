@@ -151,7 +151,7 @@
             }
             
  			$.ajax({
-				url: 'http://www.councilofcoders.com/phonegap/get_rest_tables.php',
+				url: 'http://api-soulroll.friendlinet.com/get_rest_tables.php',
 				dataType: 'jsonp',
 				jsonp: 'jsoncallback',
 				timeout: 50000000,
@@ -183,7 +183,7 @@
    				if(order_id == null || order_id == ""){
 					$.ajax({
 					type: 'GET',
-					url: 'http://www.councilofcoders.com/phonegap/set_start_order.php',
+					url: 'http://api-soulroll.friendlinet.com/set_start_order.php',
 					data: { table_no: pass_table_id, user_id: user_id,name:name,noOfPeople:noOfPeople,tel:tel,date:date,time:time}, 
 					dataType: 'jsonp',
 					jsonp: 'jsoncallback',

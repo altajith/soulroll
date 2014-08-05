@@ -122,7 +122,7 @@
 	var uitem_id = getUrlVars()["item_id"];
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/get_selected_item.php',
+		url: 'http://api-soulroll.friendlinet.com/get_selected_item.php',
 		data: { itm_id: uitem_id }, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',

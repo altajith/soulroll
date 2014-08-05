@@ -95,6 +95,8 @@
            </script>
              <div class="ui-body margpage">
                 
+				<div id="resMsgError" class="error-message"> </div>
+                <div id="resMsg" class="success-message"> </div>
                 <div class="gallery">
                 	 <div id="loading">
                 		<div class="circle"></div>
@@ -130,7 +132,7 @@
 	var total_amount=0;
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/get_items_from_cart.php',
+		url: 'http://api-soulroll.friendlinet.com/get_items_from_cart.php',
 		data: {usr_id: user_id}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -186,7 +188,7 @@
 	var output_selected_package = $('#selected_package');
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/get_packages_from_cart.php',
+		url: 'http://api-soulroll.friendlinet.com/get_packages_from_cart.php',
 		data: {usr_id: user_id}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -226,7 +228,7 @@
 		document.getElementById("loading").style.display="block";
     	$.ajax({
 			type: 'GET',
-			url: 'http://www.councilofcoders.com/phonegap/remove_from_package_cart.php',
+			url: 'http://api-soulroll.friendlinet.com/remove_from_package_cart.php',
 			data: {pack_id: pack_id, user_id:window.user_id}, 
 			dataType: 'jsonp',
 			jsonp: 'jsoncallback',
@@ -234,7 +236,9 @@
 			success: function(data, status){
  				if(data.res == "1"){
 					
-					alert("Removed from the order.");
+	                document.getElementById("resMsgError").innerHTML="";
+	                document.getElementById("resMsg").innerHTML="Removed from the order.";
+                
 					document.getElementById("loading").style.display="none";
 					location.reload();
 				}
@@ -259,7 +263,7 @@
 	document.getElementById("loading").style.display="block";
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/remove_from_cart.php',
+		url: 'http://api-soulroll.friendlinet.com/remove_from_cart.php',
 		data: { itm_id: uitem_id, usr_id: user_id}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -267,7 +271,9 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Removed from the order.");
+               	 	document.getElementById("resMsgError").innerHTML="";
+                	document.getElementById("resMsg").innerHTML="Removed from the order.";
+                
 					document.getElementById("loading").style.display="none";
 					location.reload();
 				}
@@ -284,7 +290,7 @@
 	
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/check_cart.php',
+		url: 'http://api-soulroll.friendlinet.com/check_cart.php',
 		data: { itm_id: uitem_id, usr_id: user_id}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -316,7 +322,7 @@
 	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/update_cart.php',
+		url: 'http://api-soulroll.friendlinet.com/update_cart.php',
 		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -324,7 +330,9 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Update the order.");
+                	document.getElementById("resMsgError").innerHTML="";
+                	document.getElementById("resMsg").innerHTML="Update the order.";
+                
 					document.getElementById("loading").style.display="none";
 					location.reload();
 				}
@@ -340,7 +348,7 @@
 		document.getElementById("loading").style.display="block";
 		$.ajax({
 			type: 'GET',
-			url: 'http://www.councilofcoders.com/phonegap/cart_to_kitchen.php',
+			url: 'http://api-soulroll.friendlinet.com/cart_to_kitchen.php',
 			data: { user_id: window.user_id, order_id: window.order_id}, 
 			dataType: 'jsonp',
 			jsonp: 'jsoncallback',
@@ -375,7 +383,8 @@
 		}
 		else
 		{
-			alert("You have to select at least one item.");
+                document.getElementById("resMsgError").innerHTML="You have to select at least one item.";
+                document.getElementById("resMsg").innerHTML="";
 		}
 	}
 	

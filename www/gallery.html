@@ -84,6 +84,8 @@
             </div>
             <div class="ui-body margpage">
                 
+				<div id="resMsgError" class="error-message"> </div>
+                <div id="resMsg" class="success-message"> </div>
                 <div class="gallery">
                 	<h4 id="table_no"> </h4>
                 	<div id="loading">
@@ -129,7 +131,7 @@
     var place_order = window.localStorage.getItem("place_order");
 	var output = $('#menu_items');
 	$.ajax({
-		url: 'http://www.councilofcoders.com/phonegap/get_menu_items.php',
+		url: 'http://api-soulroll.friendlinet.com/get_menu_items.php',
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
 		timeout: 5000,
@@ -194,7 +196,7 @@
 	document.getElementById("loading").style.display="block";
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/add_to_cart.php',
+		url: 'http://api-soulroll.friendlinet.com/add_to_cart.php',
 		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -202,7 +204,9 @@
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Added to the order.");
+	                document.getElementById("resMsgError").innerHTML="";
+	                document.getElementById("resMsg").innerHTML="Added to the order.";
+                
 					document.getElementById("loading").style.display="none";
 					validate_count++;
 				}
@@ -219,15 +223,16 @@
 	document.getElementById("loading").style.display="block";
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/remove_from_cart.php',
+		url: 'http://api-soulroll.friendlinet.com/remove_from_cart.php',
 		data: { itm_id: uitem_id, usr_id: user_id}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
 		timeout: 5000,
 		success: function(data, status){
 				if(data.res == "1"){
-					
-					alert("Removed from the order.");
+						
+	                document.getElementById("resMsgError").innerHTML="";
+	                document.getElementById("resMsg").innerHTML="Removed from the order.";
 					document.getElementById("loading").style.display="none";
 					validate_count--;
 				}
@@ -243,7 +248,7 @@
 	var user_id = window.localStorage.getItem("user_id");
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/check_cart.php',
+		url: 'http://api-soulroll.friendlinet.com/check_cart.php',
 		data: { itm_id: uitem_id, usr_id: user_id}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -279,7 +284,7 @@ function update_cart(uitem_id){
 	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
 	$.ajax({
 		type: 'GET',
-		url: 'http://www.councilofcoders.com/phonegap/update_cart.php',
+		url: 'http://api-soulroll.friendlinet.com/update_cart.php',
 		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
 		dataType: 'jsonp',
 		jsonp: 'jsoncallback',
@@ -287,7 +292,8 @@ function update_cart(uitem_id){
 		success: function(data, status){
 				if(data.res == "1"){
 					
-					alert("Update the order.");
+	                document.getElementById("resMsgError").innerHTML="";
+	                document.getElementById("resMsg").innerHTML="Update the order.";
 					document.getElementById("loading").style.display="none";
 				}
 		},
@@ -321,7 +327,7 @@ function update_cart(uitem_id){
 				window.localStorage.setItem("place_order", "true");
 				$.ajax({
 					type: 'GET',
-					url: 'http://www.councilofcoders.com/phonegap/cart_to_kitchen.php',
+					url: 'http://api-soulroll.friendlinet.com/cart_to_kitchen.php',
 					data: { user_id: user_id, order_id: window.order_id}, 
 					dataType: 'jsonp',
 					jsonp: 'jsoncallback',
@@ -339,7 +345,8 @@ function update_cart(uitem_id){
 		}
 		else
 		{
-			alert("You have to select at least one item.");
+                document.getElementById("resMsgError").innerHTML="";
+                document.getElementById("resMsg").innerHTML="You have to select at least one item.";
 		}
 	}
 	
