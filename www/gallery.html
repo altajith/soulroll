@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+<html class="no-js" ng-app="myApp">
     <head>
         <meta charset="utf-8" />
         <title>Soul Roll 64</title>
@@ -8,377 +7,117 @@
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
-        <!-- Cleartype for Windows Phone - uncomment below 1 line to apply-->
-        <!--<meta http-equiv="cleartype" content="on">-->
-		<link rel="stylesheet" href="css/circle.css" />
+        
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch/apple-touch-icon-144x144-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch/apple-touch-icon-114x114-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" href="images/touch/apple-touch-icon-57x57-precomposed.png" />
         <link rel="shortcut icon" href="images/touch/apple-touch-icon.png" />
 
-        <!-- Tile icon for Win8 (144x144 + tile color)  - uncomment below 2 lines to apply-->
-        <!--<meta name="msapplication-TileImage" content="images/touch/apple-touch-icon-144x144-precomposed.png">-->
-        <!--<meta name="msapplication-TileColor" content="#222222">-->
-
-
-        <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
-        <!--
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="">
-        -->
-
-        <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
-        <!--
-        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
-        -->
-        
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,200,300,400' rel='stylesheet' type='text/css' />
         <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,300' rel='stylesheet' type='text/css' />
         
 
         <link rel="stylesheet" href="css/normalize.css" />
-        <!--<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css">-->
-        <link rel="stylesheet" href="css/jquery.mobile.structure-1.2.0.min.css" />
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <link rel="stylesheet" href="css/flexslider.css" />
-        <link rel="stylesheet" href="css/photoswipe/photoswipe.css" />
         
         <link rel="stylesheet/less" href="css/main.css" />
         <script src="js/less-1.3.3.min.js"></script>
         
-        
-        <!--<script src="js/vendor/zepto.min.js"></script>-->
-
-        <script src="js/jquery-1.8.2.min.js"></script>
-        <script src="js/jquery.mobile-1.2.0.min.js"></script>
-        <script src="js/helper.js"></script>
-        <script src="js/jquery.flexslider-min.js"></script>
-        <script src="js/photoswipe/klass.min.js"></script>
-        <script src="js/photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
-        <script src="js/jquery.easyListSplitter.js"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-        
-        <script src="js/forms.js"></script>
-        <script src="js/main.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-            g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-            s.parentNode.insertBefore(g,s)}(document,"script"));
-        </script>
-        
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+    	<script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"> </script>
+    	<script type="text/javascript" src="erben-modules/menu-items-module.js"></script>   
+</head>
     <body class="my-body">
-        <!-- Add your site or application content here -->
         <div id="gallery-page" class="page orange-page" data-theme="a" data-role="page">
             <div id="header" data-role="header">
                 <div class="margpage">
-                    <!--<h2>Water</h2>-->
                     <a href="index.html" data-role="none" data-transition="flip" class="left"><img src="images/rsz_back.png"/></a>
                     <a href="index.html" data-role="none" data-transition="flip" class="right"><img src="images/rsz_1home.png"/></a>
                     <h1>Soul Roll 64'</h1>
                 </div>
             </div>
-            <div class="ui-body margpage">
+            
+            <div class="ui-body margpage" ng-controller="MainCtrl" data-ng-init="init()">
+            	
+				<div class="social left">
+                	<input type="button" id="my_order_button" ng-click="confirm_order();" class="button2" value="My Order" />
+                </div> 
+                <div class="slogan right">
+                	<input type="button" id="place_button" ng-click="place_order_func();" class="button2" value="Place your order"  />
+                </div>
                 
+                <style>
+	                input.txt {
+						background: white;
+						border: 1px solid #DDD;
+						border-radius: 5px;
+						box-shadow: 0 0 5px #DDD inset;
+						color: #666;
+						padding: 5px 10px;
+						width: 96%;
+						outline: none;
+					}
+				</style>
+                <br/><br/>
 				<div id="resMsgError" class="error-message"> </div>
                 <div id="resMsg" class="success-message"> </div>
                 <div class="gallery">
-                	<h4 id="table_no"> </h4>
+                	<h4 id="table_no">Selected Table No : {{tableNo}}</h4>
+                	By name : <input type="text" class="txt" data-ng-model="name" />
+                	<br/><br/>
+                	By food type : <input type="text" class="txt" data-ng-model="mtype" />
+             		<br/><br/>
+             		
                 	<div id="loading">
                 		<div class="circle"></div>
 						<div class="circle1"></div>
 					</div>
-                    <ul id="menu_items">
-                    </ul>
-                </div>
-				   <div class="social left">
-                    	<input type="button" id="my_order_button" onclick="confirm_order();" class="button2" value="My Order" />
-                    </div> 
-                    <div class="slogan right">
-                    	
-                    	<input type="button" id="place_button" onclick="place_order_func();" class="button2" value="Place your order"  />
+					
+                     	<ul id="menu_items" >
+                     		<li ng-repeat="(key, value) in items | filter:filterByName | filter:filterByType">
+	                    		<a onclick="setHref({{value.item_id}});"  class="album-photo"  style="height:200px !important;">
+	                    			<span class="counter"></span>
+	                    			<img ng-src="{{value.item_image_path}}" style="height:100% !important;" />
+	                    		</a>
+	                    		<a class="album-detail group">
+	                    			<span class="left"> {{value.item_name}} </span>
+	                    			<span class="right"> ${{value.price}} </span>
+	                    		
+	                    		<span class="right" ng-show="ordered != 'false'">
+	                    			<input type="checkbox" ng-click="change_the_cart({{value.item_id}});" class="squaredOne" id="chkbut{{value.item_id}}" />
+	                    			<lable id="chklbl{{value.item_id}}" class="lbl">
+	                    				<b>Check</b>
+	                    			</lable>
+	                    				<select class="noOfItems" ng-change="update_cart({{value.item_id}});" ng-model="myOption" id="noItems{{value.item_id}}" >
+	                    					<option value="1">1</option>
+	                    					<option value="2">2</option>
+	                    					<option value="3">3</option>
+	                    					<option value="4">4</option>
+	                    					<option value="5">5</option>
+	                    					<option value="6">6</option>
+	                    					<option value="7">7</option>
+	                    					<option value="8">8</option>
+	                    					<option value="9">9</option>
+	                    					<option value="10">10</option>
+	                    					</select>&nbsp;&nbsp;&nbsp;
+	                    			</span>
+	                    		</a>
+								
+                    		</li>
+                    		
+                     	</ul>
+                     	
                     </div>
-            </div>
+                    
+  
+                </div>
             
-            
-   <script type="text/javascript">
-    var validate_count=0;
-    var order_id = window.localStorage.getItem("order_id");
-    var table_no = window.localStorage.getItem("table_no");
-    if(order_id == null || order_id == ""){
-  		//window.location = "start-order.html";
-  		$.mobile.changePage( "start-order.html", {
-  			transition: "flip",
-  			role:"none",
-  			reverse: false,
-  			changeHash: true
-		});
-    }
-         
-    function setHref(val_id){
-       window.location = "gallery-detail.html?item_id="+val_id;
-    }
-    
-    window.onload = function(){
-    	document.getElementById("table_no").innerHTML="Selected Table No : "+table_no;
-    };
-	//Load the menu list
-	
-    var place_order = window.localStorage.getItem("place_order");
-	var output = $('#menu_items');
-	$.ajax({
-		url: 'http://api-soulroll.friendlinet.com/get_menu_items.php',
-		dataType: 'jsonp',
-		jsonp: 'jsoncallback',
-		timeout: 5000,
-		success: function(data, status){
-			$.each(data, function(i,item){ 
-				var menu = '<li>'
-                            +'<a onclick="setHref('+item.item_id+');"  class="album-photo"  style="height:200px !important;">'
-                               +' <span class="counter">'+(i+1)+'</span>'
-                               +' <img src="'+item.item_image_path+'" style="height:100% !important;" />'
-                          + '</a>'
-                            +'<a class="album-detail group">'
-                              +  '<span class="left"> '+item.item_name+' </span>'
-                              + '<span class="right">  $'+item.price+'  </span>'
-                           + '</a>';
-						if(place_order != "true")
-						{      
-                         menu=menu + '<span class="right"><input type="checkbox" onClick="change_the_cart('+item.item_id+');" class="squaredOne" id="chkbut'+item.item_id+'" /><lable id="chklbl'+item.item_id+'" class="lbl"><b>Check</b></lable>'
-                              + '<select class="noOfItems" onchange="update_cart('+item.item_id+');" id="noItems'+item.item_id+'" >'
-                              + 	'<option value="1">1</option>'
-                              + 	'<option value="2">2</option>'
-                              + 	'<option value="3">3</option>'
-                              + 	'<option value="4">4</option>'
-                              + 	'<option value="5">5</option>'
-                              + 	'<option value="6">6</option>'
-                              + 	'<option value="7">7</option>'
-                              + 	'<option value="8">8</option>'
-                              + 	'<option value="9">9</option>'
-                              + 	'<option value="10">10</option>'
-                              + '</select>'
-                              +'</span>'
-                        +'</li><br/>';
-                       }
-				output.append(menu);
-				check_item_available_in_cart(item.item_id);
-			
-			});
-		},
-		error: function(){
-			output.text('There was an error loading the data.');
-		}
-	});
-	
-	function change_the_cart(uitem_id){
-		var place_order = window.localStorage.getItem("place_order");
-		if(place_order != "true")
-		{
-			if(document.getElementById("chkbut" + uitem_id).checked == true)
-			{
-				add_item(uitem_id);
-			}
-			else
-			{
-				remove_item(uitem_id);
-			}
-		}
-	}
-	
-	function add_item(uitem_id){
-	var pass_id=uitem_id;
-	var user_id = window.localStorage.getItem("user_id");
-	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
-	document.getElementById("loading").style.display="block";
-	$.ajax({
-		type: 'GET',
-		url: 'http://api-soulroll.friendlinet.com/add_to_cart.php',
-		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
-		dataType: 'jsonp',
-		jsonp: 'jsoncallback',
-		timeout: 5000,
-		success: function(data, status){
-				if(data.res == "1"){
-					
-	                document.getElementById("resMsgError").innerHTML="";
-	                document.getElementById("resMsg").innerHTML="Added to the order.";
-                
-					document.getElementById("loading").style.display="none";
-					validate_count++;
-				}
-		},
-		error: function(){
-			output.text('There was an error loading the data.');
-		}
-	});
-	}
-	
-	function remove_item(uitem_id){
-	var pass_id=uitem_id;
-	var user_id = window.localStorage.getItem("user_id");
-	document.getElementById("loading").style.display="block";
-	$.ajax({
-		type: 'GET',
-		url: 'http://api-soulroll.friendlinet.com/remove_from_cart.php',
-		data: { itm_id: uitem_id, usr_id: user_id}, 
-		dataType: 'jsonp',
-		jsonp: 'jsoncallback',
-		timeout: 5000,
-		success: function(data, status){
-				if(data.res == "1"){
-						
-	                document.getElementById("resMsgError").innerHTML="";
-	                document.getElementById("resMsg").innerHTML="Removed from the order.";
-					document.getElementById("loading").style.display="none";
-					validate_count--;
-				}
-		},
-		error: function(){
-			output.text('There was an error loading the data.');
-		}
-	});
-	}
-	
-	function check_item_available_in_cart(uitem_id){
-	var pass_id=uitem_id;
-	var user_id = window.localStorage.getItem("user_id");
-	$.ajax({
-		type: 'GET',
-		url: 'http://api-soulroll.friendlinet.com/check_cart.php',
-		data: { itm_id: uitem_id, usr_id: user_id}, 
-		dataType: 'jsonp',
-		jsonp: 'jsoncallback',
-		timeout: 50000000,
-		success: function(data, status){
-			if(data.res == "1")
-			{
-				
-				document.getElementById('chkbut' + uitem_id).checked=true;
-				document.getElementById('noItems' + uitem_id).value=data.noOfItems;
-				validate_count++;
-			}
-			else
-			{
-				document.getElementById('chkbut' + uitem_id).checked=false;
-			}
-		},
-		error: function(){
-			output.text('There was an error loading the data.');
-		}
-	});
-		
-	}
-	
-function update_cart(uitem_id){
-	var place_order = window.localStorage.getItem("place_order");
-	if(place_order != "true")
-	{
-	document.getElementById("loading").style.display="block";
-	var pass_id=uitem_id;
-	if(document.getElementById('chkbut' + pass_id).checked == true){
-	var user_id = window.localStorage.getItem("user_id");
-	var noItemsTemp = document.getElementById("noItems"+pass_id).value;
-	$.ajax({
-		type: 'GET',
-		url: 'http://api-soulroll.friendlinet.com/update_cart.php',
-		data: { itm_id: uitem_id, usr_id: user_id,noItemsPass: noItemsTemp}, 
-		dataType: 'jsonp',
-		jsonp: 'jsoncallback',
-		timeout: 5000,
-		success: function(data, status){
-				if(data.res == "1"){
-					
-	                document.getElementById("resMsgError").innerHTML="";
-	                document.getElementById("resMsg").innerHTML="Update the order.";
-					document.getElementById("loading").style.display="none";
-				}
-		},
-		error: function(){
-			output.text('There was an error loading the data.');
-		}
-	});
-	}
-	}
-}
-	
-	function confirm_order(){
-		window.location ="services.html";
-	
-	}
-	
-			
-	function place_order_func(){
-		var place_order = window.localStorage.getItem("place_order");
-		var user_id = window.localStorage.getItem("user_id");
-		document.getElementById("loading").style.display="block";
-		if(window.validate_count != 0){
-			if(place_order == "true")
-			{
-				document.getElementById("place_button").value="Order is placed.";
-				document.getElementById("place_button").disabled=true;
-				
-			}
-			else
-			{
-				window.localStorage.setItem("place_order", "true");
-				$.ajax({
-					type: 'GET',
-					url: 'http://api-soulroll.friendlinet.com/cart_to_kitchen.php',
-					data: { user_id: user_id, order_id: window.order_id}, 
-					dataType: 'jsonp',
-					jsonp: 'jsoncallback',
-					timeout: 50000000,
-					success: function(data, status){
-						window.location = "services.html";
-						
-						document.getElementById("loading").style.display="none";
-					},
-					error: function(){
-						output.text('There was an error loading the data.');
-					}
-				});
-			}
-		}
-		else
-		{
-                document.getElementById("resMsgError").innerHTML="";
-                document.getElementById("resMsg").innerHTML="You have to select at least one item.";
-		}
-	}
-	
-        </script>
-   
-                        <div id="footer" class="footer">
-                <div class="padpage group">
                     <div class="social left ">
-                    	  
                         Designed @ ErbenLabs
-
                     </div> 
                     <div class="slogan right">
                     	
-                     </div>
-            <script>
-            	  
-    	var place_order = window.localStorage.getItem("place_order");
-    	
-		if(place_order == "true")
-		{
-			document.getElementById("place_button").value="Order is placed";
-			document.getElementById("place_button").disabled=true;
-		}
-		else
-		{
-			document.getElementById("place_button").value="Place your Order";
-		}
-	
-            </script>      
-                </div>
-            </div>            
+                    </div>
+                       
         
         </div>
     </body>
