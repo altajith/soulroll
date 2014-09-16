@@ -20,7 +20,7 @@ angular.module('starter', ['ionic','firebase' ,'starter.controllers', 'starter.s
       // Might already be handled by logout event below
       
     	 alert("s");
-      $state.go('login');
+      $state.go('tab.dash');
     }else{
     	 alert("s");
     	
@@ -34,7 +34,7 @@ angular.module('starter', ['ionic','firebase' ,'starter.controllers', 'starter.s
 
   $rootScope.$on('$firebaseSimpleLogin:logout', function(e, user) {
     console.log($state);
-    $state.go('login');
+    $state.go('tab.dash');
   });
              
     if(window.cordova && window.cordova.plugins.Keyboard) {
