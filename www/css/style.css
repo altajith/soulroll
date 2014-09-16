@@ -1,0 +1,52 @@
+/* Empty. Add your own CSS if you like */
+.top-bar{
+	background-color:#00a8ff !important;
+}
+
+.title{
+	color: white !important;
+}
+
+.search-bar{
+	border:1px #00a8ff solid !important;
+	color: #00a8ff !important;
+	background-image:url('../img/search-icon.png') !important;
+	background-repeat:no-repeat !important;
+	background-position:right !important;
+}
+
+.loyalHead{
+	color: #00a8ff !important;
+	font-size:20px;
+	position:absolute;
+	margin-top:0px !important;
+	margin-left:5px !important;
+}
+
+.loyalPoints{
+	color: #515152 !important;
+	font-size:15px;
+	position:absolute;
+	margin-top:23px !important;
+	margin-left:2px !important;
+}
+
+.table1{
+	width:100%;
+}
+
+.table1 td{
+	border:1px #ccc solid !important;
+	padding:5px;
+}
+
+.thumnail{
+	width:60px;
+	height:60px;
+	border-radius: 50%;
+}
+
+.loyalRate{
+	color: #e8a93e !important;
+	font-size:26px !important;
+}

@@ -1,0 +1,26 @@
+<ion-view title="Account">
+  <ion-content class="padding">
+    <h1>Account</h1>
+    
+    <div ng-hide="supportsGeo">
+        Your browser doesn't support geolocation
+    </div>
+    <div ng-show="supportsGeo">
+        Manual digest when position received: <input type="checkbox" ng-model="manualDigest"/>
+        <br/>
+        <button ng-click="doTest1()">
+            Geo Location Test 1: window.navigator.geolocation
+        </button>
+        <button ng-click="doTest2()">
+            Geo Location Test 2: $window.navigator.geolocation
+        </button>
+        <hr/>
+        Need to type something to trigger digest:
+        <input type="text" ng-model="something"/>
+        <hr/>
+        Position: <button ng-click="position=null">clear</button>
+        <pre ng-bind="position|json"/>
+    </div>
+    
+  </ion-content>
+</ion-view>

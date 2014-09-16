@@ -1,0 +1,21 @@
+<ion-view title="Loyalty Points">
+  <ion-content class="padding">
+  
+    <input type="search" class="search-bar">
+    <br/>
+    <center>
+    <table class="table1">
+    	
+    	<tr >
+    		<td>
+    			<img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698904-icon-23-star-512.png" class="thumnail">
+    			<label class="loyalHead">{{loyalCards.name}}</label>
+    			<label class="loyalPoints">{{loyalCards.points}} pts</label><span class="fa-at"></span>
+    			<label class="loyalRate" ng-repeat="i in getNumber(number) track by $index">&#9734;</label>
+    		</td>
+    	</tr>
+    	
+    </table>
+    </center>
+  </ion-content>
+</ion-view>
